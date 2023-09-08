@@ -1,2 +1,6 @@
-# SMV_project_praviTESTESTESTETSTERESTESTRER
+
+# SMV_project_pravi
+dober dan
+
 sirov burek
+
