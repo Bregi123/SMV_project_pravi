@@ -15,7 +15,7 @@
     grid-template-columns: auto;
     grid-template-areas: 
     'square1 square2'
-    'square1 dropbtn'
+    'square1 dropdown'
     'square1 square2'
     'square1 square2'
     ;
@@ -29,7 +29,7 @@
   }
   
   .dropdown {
-    position: relative;
+ 
     display: inline-block;
   }
   
