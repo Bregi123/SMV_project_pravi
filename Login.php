@@ -33,47 +33,47 @@ if (isset($_POST['submit'])) {
 ?>
 
 <html>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
 <head>
     <link rel="stylesheet" href="Css.css">
 
 </head>
 
+</head>
 <body>
     <div class="container1">
-
-        <div class="dropdown">
-            <button class="dropbtn">Menu</button>
-            <div class="dropdown-content">
-                <a href="Home_page.html">Home</a>
-                <a href="info.html">Info</a>
-            </div>
-
+    
+    <div class="dropdown">
+        <button class="dropbtn">Menu</button>
+        <div class="dropdown-content">
+          <a href="Home_page.html">Home</a>
+          <a href="info.html">Info</a>
         </div>
+      
     </div>
-    <div>
-        <h1>Login</h1>
-    </div>
+</div>
+<div style="margin-top: 100px; text-align: center;" >
+    <form>
+        <div class="row mb-3">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" id="inputEmail3">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10" style="align-self: center;">
+            <input type="password" class="form-control" id="inputPassword3">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </form>
+</div>
 
-    <div class="form">
-        <form class="form-horizontal" method="post" action="LOGIN.php">
-            <div class="naslov">
-                <h1> VPIŠI SE</h1>
-            </div>
-            <div class="group">
-                <label class="uporabnik">Uporabniško ime</label>
-                <input type="text" class="tabela" name="uporabnik" value="">
-            </div>
-            <div class="group">
-                <label class="geslo">Geslo</label>
-                <input type="password" class="tabela" name="geslo" value="">
-            </div>
-            <div class="group">
-                <input type="submit" name="submit" value="VPIS">
-            </div>
-        </form>
-    </div>
 
+    
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 </html>
