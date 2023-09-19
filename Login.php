@@ -1,5 +1,5 @@
 <?php
-include 'database.php';
+/*include 'database.php';
 
 if (isset($_SESSION['ime'])) {
     header('Location: HOME.php');
@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
     }
 
     $stmt->close();
-}
+}*/
 ?>
 
 <html>
@@ -51,8 +51,28 @@ if (isset($_POST['submit'])) {
 
         </div>
     </div>
-    <h1>Login</h1>
+    <div>
+        <h1>Login</h1>
+    </div>
 
+    <div class="form">
+        <form class="form-horizontal" method="post" action="LOGIN.php">
+            <div class="naslov">
+                <h1> VPIŠI SE</h1>
+            </div>
+            <div class="group">
+                <label class="uporabnik">Uporabniško ime</label>
+                <input type="text" class="tabela" name="uporabnik" value="">
+            </div>
+            <div class="group">
+                <label class="geslo">Geslo</label>
+                <input type="password" class="tabela" name="geslo" value="">
+            </div>
+            <div class="group">
+                <input type="submit" name="submit" value="VPIS">
+            </div>
+        </form>
+    </div>
 
 </body>
 
