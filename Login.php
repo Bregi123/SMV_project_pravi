@@ -45,34 +45,31 @@ if (isset($_POST['submit'])) {
         <div class="dropdown">
             <button class="dropbtn">Menu</button>
             <div class="dropdown-content">
-                <a href="Home_page.html">Home</a>
+                <a href="Home_page.php">Home</a>
                 <a href="info.html">Info</a>
             </div>
 
         </div>
-    </div>
-    <div>
-        <h1>Login</h1>
-    </div>
 
-    <div class="form">
-        <form class="form-horizontal" method="post" action="LOGIN.php">
-            <div class="naslov">
-                <h1> VPIŠI SE</h1>
-            </div>
-            <div class="group">
-                <label class="uporabnik">Uporabniško ime</label>
-                <input type="text" class="tabela" name="uporabnik" value="">
-            </div>
-            <div class="group">
-                <label class="geslo">Geslo</label>
-                <input type="password" class="tabela" name="geslo" value="">
-            </div>
-            <div class="group">
-                <input type="submit" name="submit" value="VPIS">
-            </div>
-        </form>
-    </div>
+
+        <div class="form">
+            <form class="form-horizontal" method="post" action="LOGIN.php">
+                <div class="naslov">
+                    <h1> VPIŠI SE</h1>
+                </div>
+                <div class="group">
+                    <label class="uporabnik">Uporabniško ime</label>
+                    <input type="text" class="tabela" name="uporabnik" value="">
+                </div>
+                <div class="group">
+                    <label class="geslo">Geslo</label>
+                    <input type="password" class="tabela" name="geslo" value="">
+                </div>
+                <div class="group">
+                    <input type="submit" name="submit" value="VPIS">
+                </div>
+            </form>
+        </div>
 
 </body>
 
