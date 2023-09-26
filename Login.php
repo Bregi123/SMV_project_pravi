@@ -35,6 +35,32 @@ if (isset($_POST['submit'])) {
 }*/
 
 include 'database.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if (isset($_POST['email']) && isset($_POST['password'])) {
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+
+      $email = stripcslashes($email);
+      $password = stripcslashes($password);
+      $email = mysqli_real_escape_string($link, $email);
+      $password = mysqli_real_escape_string($link, $password);
+
+      $sql = "SELECT * FROM login WHERE email = '$email' AND password = '$password'";
+      $result = mysqli_query($link, $sql);
+      $count = mysqli_num_rows($result);
+
+      if ($count == 1) {
+          echo "Login successful!";
+      } else {
+          echo "Login failed. Check your credentials.";
+      }
+  } else {
+      echo "Email and password not provided.";
+  }
+}
+
+
 /*
 if (isset($SESSION['user'])) {
   header('location:Home_page.php');
@@ -49,7 +75,7 @@ if (isset($SESSION['email'])) {
   $stmt = $link->prepare("SELECT * FROM login WHERE email = ?");
   $stmt->bind_param("s", $email);
   $stmt->execute();
-  $stmt->bind_result($name_d, $surname_d, $user_d, $user_type_d,  $email_d, $password_d, $id);
+  $stmt->bind_result($id_login, $name_d, $surname_d, $user_d, $user_type_d, $password_d, $email_d);
 
   if ($stmt->fetch()) {
     if (password_verify($password, $password_d)) {
@@ -62,7 +88,7 @@ if (isset($SESSION['email'])) {
 
   $stmt->close();
 } 
-else {
+if(!isset($SESSION['email'])){
   var_dump("nisi vpisan");
 }
 */
@@ -92,17 +118,17 @@ else {
 
 
     <div style="margin-top: 100px; text-align: center;">
-      <form>
+      <form method ="POST">
         <div class="row mb-3">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
-            <input type="email" class="form-control" id="inputEmail3">
+            <input type="email" name ="email" class="form-control" id="inputEmail3">
           </div>
         </div>
         <div class="row mb-3">
           <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10" style="align-self: center;">
-            <input type="password" class="form-control" id="inputPassword3">
+            <input type="password" name = "password" class="form-control" id="inputPassword3">
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Sign in</button>
