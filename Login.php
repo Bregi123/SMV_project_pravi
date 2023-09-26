@@ -1,38 +1,4 @@
 <?php
-/*include 'database.php';
-
-echo("serbus");
-
-if (isset($_SESSION['email'])) {
-  header('Location: Home_page.php');
-  echo("ste že vpisani");
-  exit();
-}
-if (isset($_POST['submit'])) {
-  $email = $_POST['email'];
-
-  $password = $_POST['password'];
-
-  $hashed_password = password_hash($geslo, PASSWORD_DEFAULT);
-
-
-  $stmt = $link->prepare("SELECT * FROM login WHERE email = ?");
-  $stmt->bind_param("s", $email);
-  $stmt->execute();
-  $stmt->bind_result($name_d, $surname_d, $user_d, $email_d, $geslo_d, $id);
-
-  if ($stmt->fetch()) {
-    if (password_verify($geslo, $geslo_d)) {
-      header('Location: Home_page.php');
-      $_SESSION["name"] = $name_d;
-      $_SESSION["surname"] = $surname_d;
-      $_SESSION["username"] = $username_d;
-      $_SESSION["email"] = $email_d;
-    }
-  }
-
-  $stmt->close();
-}*/
 
 include 'database.php';
 
@@ -59,39 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       echo "Email and password not provided.";
   }
 }
-
-
-/*
-if (isset($SESSION['user'])) {
-  header('location:Home_page.php');
-  exit();
-}
-
-if (isset($SESSION['email'])) {
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $hashed_password = password_hash($passwrod, PASSWORD_DEFAULT);
-
-  $stmt = $link->prepare("SELECT * FROM login WHERE email = ?");
-  $stmt->bind_param("s", $email);
-  $stmt->execute();
-  $stmt->bind_result($id_login, $name_d, $surname_d, $user_d, $user_type_d, $password_d, $email_d);
-
-  if ($stmt->fetch()) {
-    if (password_verify($password, $password_d)) {
-      header('Location: HOME.php');
-      $_SESSION['email'] = $email_d;
-      $_SESSION['user'] = $user_d;
-      $_SESSION['surname'] = $surname_d;
-    }
-  }
-
-  $stmt->close();
-} 
-if(!isset($SESSION['email'])){
-  var_dump("nisi vpisan");
-}
-*/
 ?>
 
 <html>
