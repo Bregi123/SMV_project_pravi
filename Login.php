@@ -15,13 +15,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $sql = "SELECT * FROM login WHERE email = '$email' AND password = '$password'";
       $result = mysqli_query($link, $sql);
       $count = mysqli_num_rows($result);
+      $user_type = "" ;
 
-      if ($count == 1) {
+
+
+
+      if ($count == 1) 
+      {
           echo "Login successful!";
+          header("Location: admin.php");
+
       } else {
           echo "Login failed. Check your credentials.";
       }
-  } else {
+  }   else {
       echo "Email and password not provided.";
   }
 }
