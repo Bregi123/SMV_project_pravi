@@ -1,16 +1,18 @@
-
-
-
+<!DOCTYPE html>
 <?php
-// TU MORS CHECKAT KER USER JE CE JE USERTYPE TEACHER TE FUKNE NA TOTO STRAN CENE PA NA ADMIN PA NAREI SE ENO ISTO SKOPIRAJ VSE ZA UCENCA TAK DA STUDENT 
+// Start the session (this should be at the top of your PHP script)
 session_start();
 
+if (isset)
+
+
+// Check if the user is logged in
 ?>
 <html>
 <head>
     <title>Your Page</title>
     <style>
-         #logoutButton {
+        #logoutButton {
             background-color: #007BFF; /* Change the background color as desired */
             color: #fff; /* Change the text color as desired */
             border: none;
@@ -59,11 +61,11 @@ session_start();
             <li></li>
             <li></li>
             <li>Home</li>
-            <li>Subjects</li>
-            <li>classes</li>
+            <li>Users management</li>
+            <li>Subject management </li>
             <li>Account</li>
         </ul>
-        <button  onclick="location.href = 'login.php'" ; id="logoutButton">Logout</button>
+        <button  onclick="location.href = 'logout.php'" ; id="logoutButton">Logout</button>
     </div>
     
     <button id="toggleButton">Toggle Navigation Bar</button>
@@ -84,6 +86,7 @@ session_start();
 
         // Add click event listener to the button
         toggleButton.addEventListener("click", toggleSidebar);
+        
     </script>
 </body>
 </html>

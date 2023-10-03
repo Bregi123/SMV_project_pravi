@@ -4,6 +4,7 @@
 
         $_SESSION['user'] = $user;
         $_SESSION['password'] = $hashed_password;
+        $_SESSION['user_type'] = $user_type;
         $_SESSION['logged_in'] = true;
         
     }  
