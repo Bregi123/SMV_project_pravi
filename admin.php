@@ -1,7 +1,7 @@
 <?php
 // Start the session (this should be at the top of your PHP script)
-/*session_start();
-  */
+session_start();
+  
     //exit();
 if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
     header("location: login.php");
@@ -12,9 +12,9 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
 <head>
     <title>Your Page</title>
     <style>
-        body {
-         background-color: coral;
-        }
+              body {
+  background-color:#d3d3d3;
+}
         #logoutButton {
             background-color: #007BFF; /* Change the background color as desired */
             color: #fff; /* Change the text color as desired */
