@@ -1,16 +1,21 @@
-<!DOCTYPE html>
 <?php
 // Start the session (this should be at the top of your PHP script)
-session_start();
-
-
-// Check if the user is logged in
+/*session_start();
+  */
+    //exit();
+if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
+    header("location: login.php");
+    exit();
+}
 ?>
 <html>
 <head>
     <title>Your Page</title>
     <style>
-         #logoutButton {
+        body {
+         background-color: coral;
+        }
+        #logoutButton {
             background-color: #007BFF; /* Change the background color as desired */
             color: #fff; /* Change the text color as desired */
             border: none;
@@ -52,7 +57,7 @@ session_start();
         }
     </style>
 </head>
-<body>
+<body >
     <div class="sidebar" id="sidebar">
         <!-- Sidebar content goes here -->
         <ul>
@@ -63,7 +68,11 @@ session_start();
             <li>Subject management </li>
             <li>Account</li>
         </ul>
-        <button  onclick="location.href = 'login.php'" ; id="logoutButton">Logout</button>
+        <button  onclick="location.href = 'logout.php'" ; id="logoutButton">Logout</button>
+        <div class="sidebar-image">
+            <a style= "position: absolute; bottom: 40px; left: 10px; width: 50px; height: 50px;">ADMIN</a>
+        <img src="pfp.jpg" alt="Image Description" style="position: absolute; bottom: 20px; left: 10px; width: 50px; height: 50px;">
+    </div>
     </div>
     
     <button id="toggleButton">Toggle Navigation Bar</button>
@@ -87,3 +96,4 @@ session_start();
     </script>
 </body>
 </html>
+

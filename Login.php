@@ -14,10 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $sql = "SELECT * FROM login WHERE email = '$email' AND password = '$password'";
         $result = mysqli_query($link, $sql);
-
+        /*2gifzefgriubheoigho*/$_SESSION['logged_in'] = true;
         if ($result) {
             $count = mysqli_num_rows($result);
-            
             if ($count == 1) {
                 $row = mysqli_fetch_assoc($result);
                 $user_type = $row["user_type"];
