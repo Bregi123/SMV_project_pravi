@@ -2,29 +2,22 @@
 <?php
 // Start the session (this should be at the top of your PHP script)
 session_start();
-var_dump($_SESSION);
+
 
 // Check if the user is logged in
-if (isset($_SESSION['id_login'])) {
-    // Check if the user is an admin+
-    
-    if ($_SESSION['user_type'] === 'admin') {
-        // The user is an admin, you can perform admin-specific actions here
-        header("Location: admin.php");
-    } else if ($_SESSION['user_type'] === 'teacher') {
-        // The user is not an admin
-        header("Location: teacher.php");
-    }
-} else {
-    // The user is not logged in
-    // You can redirect them to a login page or show a message
-    echo "Please log in to access this page.";
-}
 ?>
 <html>
 <head>
     <title>Your Page</title>
     <style>
+         #logoutButton {
+            background-color: #007BFF; /* Change the background color as desired */
+            color: #fff; /* Change the text color as desired */
+            border: none;
+            border-radius: 5px; /* Rounded corners */
+            padding: 10px 20px; /* Adjust padding as needed */
+            cursor: pointer;
+        }
         /* Styles for the sidebar */
         .sidebar {
             width: 250px;
@@ -70,7 +63,7 @@ if (isset($_SESSION['id_login'])) {
             <li>Subject management </li>
             <li>Account</li>
         </ul>
-        <button id="logoutButton">Logout</button>
+        <button  onclick="location.href = 'login.php'" ; id="logoutButton">Logout</button>
     </div>
     
     <button id="toggleButton">Toggle Navigation Bar</button>
