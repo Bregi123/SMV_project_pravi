@@ -4,4 +4,6 @@ session_start();
 session_unset();
 session_destroy();
 
-Header("location; login.php")
+Header("location: login.php")
+
+?>

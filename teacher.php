@@ -1,15 +1,20 @@
-
-
-
 <?php
-// TU MORS CHECKAT KER USER JE CE JE USERTYPE TEACHER TE FUKNE NA TOTO STRAN CENE PA NA ADMIN PA NAREI SE ENO ISTO SKOPIRAJ VSE ZA UCENCA TAK DA STUDENT 
+// Start the session (this should be at the top of your PHP script)
 session_start();
-
+  
+    //exit();
+if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
+    header("location: login.php");
+    exit();
+}
 ?>
 <html>
 <head>
     <title>Your Page</title>
     <style>
+                body {
+  background-color:#d3d3d3;
+}
          #logoutButton {
             background-color: #007BFF; /* Change the background color as desired */
             color: #fff; /* Change the text color as desired */
@@ -64,6 +69,10 @@ session_start();
             <li>Account</li>
         </ul>
         <button  onclick="location.href = 'login.php'" ; id="logoutButton">Logout</button>
+        <div class="sidebar-image">
+            <a style= "position: absolute; bottom: 40px; left: 10px; width: 50px; height: 50px;">TEACHER</a>
+        <img src="pfp.jpg" alt="Image Description" style="position: absolute; bottom: 20px; left: 10px; width: 50px; height: 50px;">
+    </div>
     </div>
     
     <button id="toggleButton">Toggle Navigation Bar</button>
