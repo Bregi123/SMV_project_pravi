@@ -1,16 +1,20 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <?php
 // Start the session (this should be at the top of your PHP script)
-session_start();
-  
-    //exit();
-if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
-    header("location: login.php");
+include 'database.php';
+//session_start();
+
+if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
+    if($_SESSION['user_type'] != 'admin')
+    {
+        header("location: login.php");
     exit();
+    }
+    
 }
 include 'database.php';
-
-$sql = "SELECT* FROM login ";
+//id_login != {$_SESSION['id_login']}
+$sql = "SELECT* FROM login";
 $result = mysqli_query($link, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -36,7 +40,10 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<td>' . $row["username"] . '</td>';
     echo '<td>' . $row["user_type"] . '</td>';
     echo '<td>' . $row["email"] . '</td>';
-    echo '<td><button class="btn btn-danger">Delete</button></td>';
+    echo '<form method="POST" action="odjava.php">';
+    echo '<input name="deleteID" value="'. $row["id_login"] .'" hidden></input>';
+    echo '<td><button type="submit" name="delete-button" id="deleteBtn-' . $row["id_login"] . '" class="btn btn-danger">Delete</button></td>';
+    echo '</form>';
     echo '</tr>';
 }
 

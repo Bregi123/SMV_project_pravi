@@ -3,10 +3,14 @@
 session_start();
   
     //exit();
-if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
-    header("location: login.php");
-    exit();
-}
+    if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
+        if($_SESSION['user_type'] != 'admin')
+        {
+            header("location: login.php");
+        exit();
+        }
+        
+    }
 ?>
 <html>
 <head>
