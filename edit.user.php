@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <?php
+session_start(); 
 // Start the session (this should be at the top of your PHP script)
 include 'database.php';
 //session_start();
@@ -12,50 +13,31 @@ if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
     }
     
 }
-include 'database.php';
-//id_login != {$_SESSION['id_login']}
-$sql = "SELECT* FROM login";
+include_once 'database.php';
+$sql = "SELECT * FROM login";
 $result = mysqli_query($link, $sql);
 
-if (mysqli_num_rows($result) > 0) {
-    // Loop through the result set
-    echo '<table class="table table-striped">';
-echo '<thead>';
-echo '<tr>';
-echo '<th>ID</th>';
-echo '<th>Name</th>';
-echo '<th>Surname</th>';
-echo '<th>Username</th>';
-echo '<th>User Type</th>';
-echo '<th>Email</th>';
-echo '<th></th>';
-echo '<th></th>';
-echo '</tr>';
-echo '</thead>';
-echo '<tbody>';
-while ($row = mysqli_fetch_assoc($result)) {
-    echo '<tr>';
-    echo '<td>' . $row["id_login"] . '</td>';
-    echo '<td>' . $row["name"] . '</td>';
-    echo '<td>' . $row["surname"] . '</td>';
-    echo '<td>' . $row["username"] . '</td>';
-    echo '<td>' . $row["user_type"] . '</td>';
-    echo '<td>' . $row["email"] . '</td>';
-    echo '<form method="POST" action="odjava.php">';
-    echo '<input name="deleteID" value="'. $row["id_login"] .'" hidden></input>';
-    echo '<td><button type="submit" name="delete-button" id="deleteBtn-' . $row["id_login"] . '" class="btn btn-danger">Delete</button></td>';
-    echo '<td><button type="button" class="btn btn-primary" onclick="location.href = \'edit.user.php?id=' . $row["id_login"] . '\'">Edit</button></td>';
+include_once 'database.php';
+$result = mysqli_query($link, "SELECT * FROM login");
 
-    echo '</form>';
-    echo '</tr>';
+include_once 'database.php';
+if (count($_POST) > 0) {
+    mysqli_query($link, "UPDATE login SET id_login='" . $_POST['id_login'] . "', name='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', user_type='" . $_POST['user_type'] . "', username='" . $_POST['username'] . "', email='" . $_POST['email'] . "' WHERE id_login='" . $_POST['id_login'] . "'");
+    $message = "Record Modified Successfully";
 }
 
-echo '</tbody>';
-echo '</table>';
+if (isset($_GET['id_login'])) {
+    $result = mysqli_query($link, "SELECT * FROM login WHERE id_login='" . $_GET['id_login'] . "'");
+    $row = mysqli_fetch_array($result);
+}
+if (!empty($row)) {
+    // You can access the values in $row safely
 } else {
-    echo "No records found";
+    // Handle the case where the record is not found or $row is null
+    $message = "Record not found"; // You can set an appropriate message
 }
 
+ 
 ?>
 <html>
 <head>
@@ -150,11 +132,34 @@ echo '</table>';
     </div>
     
     <button id="toggleButton">Toggle Navigation Bar</button>
-
     
-    
+    <form name="frmUser" method="post" action="">
+<div><?php if(isset($message)) { echo $message; } ?>
+</div>
+<div style="padding-bottom:5px;">
+<a href="retrieve.php">Employee List</a>
+</div>
+Username: <br>
+<input type="hidden" name="id_login" class="txtField" value="<?php echo $row['id_login']; ?>">
+<input type="text" name="userid"  value="<?php echo $row['userid']; ?>">
+<br>
+First Name: <br>
+<input type="text" name="name" class="txtField" value="<?php echo $row['name']; ?>">
+<br>
+Last Name :<br>
+<input type="text" name="surname" class="txtField" value="<?php echo $row['surname']; ?>">
+<br>
+City:<br>
+<input type="text" name="username" class="txtField" value="<?php echo $row['username']; ?>">
+User Type:<br>
+<input type="text" name="user_type" class="txtField" value="<?php echo $row['user_type']; ?>">
+<br>
+<br>
+Email:<br>
+<input type="text" name="email" class="txtField" value="<?php echo $row['email']; ?>">
 
-<!-- The Modal -->
+<br>
+<input type="submit" name="submit" value="Submit" class="buttom">
 
 
     
