@@ -135,12 +135,17 @@ echo '</table>';
             
             <li></li>
             <li></li>
-            <li>Home</li>
+            <li><button  onclick="location.href = 'admin.php'" ; id="Button">Home</button></li>
             <li><button  onclick="location.href = 'User_management.php'" ; id="Button">Manage Users</button></li>
             <li>Subject management </li>
             <li>Account</li>
+            
         </ul>
         <button  onclick="location.href = 'logout.php'" ; id="logoutButton">Logout</button>
+
+       
+</div>
+
         <div class="sidebar-image">
             <a style= "position: absolute; bottom: 40px; left: 10px; width: 50px; height: 50px;">ADMIN</a>
         <img src="pfp.jpg" alt="Image Description" style="position: absolute; bottom: 20px; left: 10px; width: 50px; height: 50px;">
@@ -148,6 +153,8 @@ echo '</table>';
     </div>
     
     <button id="toggleButton">Toggle Navigation Bar</button>
+
+    
 
     
 
