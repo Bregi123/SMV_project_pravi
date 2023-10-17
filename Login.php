@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 } elseif ($user_type == "student") {
                   header("Location: student.php");
                   exit();
+                  echo('nimas za buraek');
               }
                 
             } else {
