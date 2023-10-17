@@ -1,4 +1,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 <?php
 // Start the session (this should be at the top of your PHP script)
 include 'database.php';
@@ -29,6 +31,7 @@ echo '<th>Username</th>';
 echo '<th>User Type</th>';
 echo '<th>Email</th>';
 echo '<th></th>';
+echo '<th></th>';
 echo '</tr>';
 echo '</thead>';
 echo '<tbody>';
@@ -43,6 +46,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<form method="POST" action="odjava.php">';
     echo '<input name="deleteID" value="'. $row["id_login"] .'" hidden></input>';
     echo '<td><button type="submit" name="delete-button" id="deleteBtn-' . $row["id_login"] . '" class="btn btn-danger">Delete</button></td>';
+    echo '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button></td>';
+
     echo '</form>';
     echo '</tr>';
 }
@@ -120,10 +125,14 @@ echo '</table>';
         }
     </style>
 </head>
+
 <body >
     <div class="sidebar" id="sidebar">
+
+
         <!-- Sidebar content goes here -->
         <ul>
+            
             <li></li>
             <li></li>
             <li>Home</li>
@@ -139,6 +148,8 @@ echo '</table>';
     </div>
     
     <button id="toggleButton">Toggle Navigation Bar</button>
+
+    
 
     <script>
         const sidebar = document.getElementById("sidebar");
@@ -159,6 +170,5 @@ echo '</table>';
     </script>
 </body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 
