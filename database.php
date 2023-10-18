@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $host = 'localhost';
 $user = 'root';
-$password = '';
+$password = 'luka';
 $db = 'smv_projekt';
 $port = 3306;
 
