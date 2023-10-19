@@ -1,7 +1,15 @@
 <?php
+
 include 'database.php';
 
-if(!isset($_SESION['logged_in'])){
-    header('Location: Login.php');
+
+if (!session_status() == PHP_SESSION_NONE && !session_status() == PHP_SESSION_DISABLED && !empty($_SESSION['email'])) 
+{
+    header('LOCATION: Home_page.php');
+
+}
+else
+{
+    header('LOCATION: Login.php');
 }
 ?>
