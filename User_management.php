@@ -44,7 +44,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<form method="POST" action="odjava.php">';
     echo '<input name="deleteID" value="'. $row["id_login"] .'" hidden></input>';
     echo '<td><button type="submit" name="delete-button" id="deleteBtn-' . $row["id_login"] . '" class="btn btn-danger">Delete</button></td>';
-    echo '<td><button type="button" class="btn btn-primary" onclick="location.href = \'edit.user.php?id=' . $row["id_login"] . '\'">Edit</button></td>';
+    echo '<td><button type="button" class="btn btn-primary" onclick="location.href = \'edit.user.php?user_id=' . $row["id_login"] . '\'">Edit</button></td>';
 
     echo '</form>';
     echo '</tr>';

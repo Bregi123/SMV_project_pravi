@@ -13,29 +13,26 @@ if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
     }
     
 }
-include_once 'database.php';
+
 $sql = "SELECT * FROM login";
 $result = mysqli_query($link, $sql);
 
-include_once 'database.php';
-$result = mysqli_query($link, "SELECT * FROM login");
 
-include_once 'database.php';
 if (count($_POST) > 0) {
     mysqli_query($link, "UPDATE login SET id_login='" . $_POST['id_login'] . "', name='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', user_type='" . $_POST['user_type'] . "', username='" . $_POST['username'] . "', email='" . $_POST['email'] . "' WHERE id_login='" . $_POST['id_login'] . "'");
     $message = "Record Modified Successfully";
 }
 
-if (isset($_GET['id_login'])) {
-    $result = mysqli_query($link, "SELECT * FROM login WHERE id_login='" . $_GET['id_login'] . "'");
+if (isset($_GET['user_id'])) {
+    $result = mysqli_query($link, "SELECT * FROM login WHERE id_login='" . $_GET['user_id'] . "'");
     $row = mysqli_fetch_array($result);
-}
-if (!empty($row)) {
-    // You can access the values in $row safely
-} else {
-    // Handle the case where the record is not found or $row is null
-    $message = "Record not found"; // You can set an appropriate message
-}
+    if (!empty($row)) {
+        // You can access the values in $row safely
+    } else {
+        // Handle the case where the record is not found or $row is null
+        $message = "Record not found"; // You can set an appropriate message
+    }
+
 
  
 ?>
