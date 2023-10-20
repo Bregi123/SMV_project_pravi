@@ -4,10 +4,16 @@
 session_start();
   
     //exit();
-if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
-    header("location: login.php");
-    exit();
-}
+    if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
+        if($_SESSION['user_type'] != 'student')
+        {
+            header("location: login.php");
+        exit();
+        }
+        
+    }
+//connect table student-subject 
+
 ?>
 
 <html>
