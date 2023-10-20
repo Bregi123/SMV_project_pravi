@@ -4,13 +4,13 @@ include 'database.php';
 
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'])
 {
-  if ($_SESSION['user_type'] == "admin") {
+  if ($_SESSION['user_type'] == "Admin") {
     header("Location: admin.php");
     exit();
-} elseif ($_SESSION['user_type']  == "teacher") {
-    header("Location: teacher.php");
+} elseif ($_SESSION['user_type']  == "Professor") {
+    header("Location: professor.php");
     exit();
-} elseif ($_SESSION['user_type'] == "student") {
+} elseif ($_SESSION['user_type'] == "Student") {
   header("Location: student.php");
   exit();
 }
@@ -37,13 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $user_type = $row["user_type"];
                 $_SESSION['user_type'] = $row["user_type"];
                 $_SESSION['user_id'] = $row['id_login'];
-                if ($user_type == "admin") {
+                if ($user_type == "Admin") {
                     header("Location: admin.php");
                     exit();
-                } elseif ($user_type == "teacher") {
-                    header("Location: teacher.php");
+                } elseif ($user_type == "Professor") {
+                    header("Location: professor.php");
                     exit();
-                } elseif ($user_type == "student") {
+                } elseif ($user_type == "Student") {
                   header("Location: student.php");
                   exit();
               }

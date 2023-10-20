@@ -1,18 +1,24 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 <?php
+include 'header.php';
+echo '<div class = "h2" >USER MANAGEMENT </div>';
 // Start the session (this should be at the top of your PHP script)
+echo '<div style = " text-align: right;">';
+echo '<button type="button" class="btn btn-primary" onclick="location.href = \'edit.user.php\'">Add</button>';
+echo '</div>';
 include 'database.php';
 //session_start();
 
 if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
-    if($_SESSION['user_type'] != 'admin')
+    if($_SESSION['user_type'] != 'Admin')
     {
-        header("location: login.php");
+        header("location: Login.php");
     exit();
     }
     
 }
-include 'database.php';
+
 //id_login != {$_SESSION['id_login']}
 $sql = "SELECT* FROM login";
 $result = mysqli_query($link, $sql);
@@ -28,6 +34,7 @@ echo '<th>Surname</th>';
 echo '<th>Username</th>';
 echo '<th>User Type</th>';
 echo '<th>Email</th>';
+echo '<th>Professor</th>';
 echo '<th></th>';
 echo '<th></th>';
 echo '</tr>';
@@ -41,10 +48,20 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<td>' . $row["username"] . '</td>';
     echo '<td>' . $row["user_type"] . '</td>';
     echo '<td>' . $row["email"] . '</td>';
+
+    if ($row["professor"] == 0)
+    {
+        echo '<td></td>';
+    }
+
+    else{
+        echo '<td> <i class="fa fa-check-square" style= "color:#0a9707"></i> </td>';
+    }
+    
     echo '<form method="POST" action="odjava.php">';
     echo '<input name="deleteID" value="'. $row["id_login"] .'" hidden></input>';
     echo '<td><button type="submit" name="delete-button" id="deleteBtn-' . $row["id_login"] . '" class="btn btn-danger">Delete</button></td>';
-    echo '<td><button type="button" class="btn btn-primary" onclick="location.href = \'edit.user.php?id=' . $row["id_login"] . '\'">Edit</button></td>';
+    echo '<td><button type="button" class="btn btn-primary" onclick="location.href = \'edit.user.php?user_id=' . $row["id_login"] . '\'">Edit</button></td>';
 
     echo '</form>';
     echo '</tr>';
@@ -58,70 +75,9 @@ echo '</table>';
 
 ?>
 <html>
-<head>
+
     <title>Your Page</title>
-    <style>
-              body {
-  background-color:#d3d3d3;
-  padding-top: 65px;
-  padding-left: 20px;
-  padding-right: 40px;
-}
-        #Button{
-            font-family: 'Trebuchet MS', sans-serif;
-            background-color: #d3d3d3; /* Change the background color as desired */
-            color: #333; /* Change the text color as desired */
-            border: none;
-            border-radius: 3px; /* Rounded corners */
-            padding: 2px 4px; /* Adjust padding as needed */
-            cursor: pointer;
-            font-weight: bold;
-            
-            
 
-        }
-        #logoutButton {
-            background-color: #007BFF; /* Change the background color as desired */
-            color: #fff; /* Change the text color as desired */
-            border: none;
-            border-radius: 5px; /* Rounded corners */
-            padding: 10px 20px; /* Adjust padding as needed */
-            cursor: pointer;
-        }
-        /* Styles for the sidebar */
-        .sidebar {
-            width: 250px;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: -250px; /* Initially hidden */
-            background-color: #333;
-            color: white;
-            transition: left 0.3s;
-        }
-
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .sidebar li {
-            padding: 15px;
-        }
-
-        /* Styles for the button */
-        #toggleButton {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-    </style>
-</head>
 
 <body >
     <div class="sidebar" id="sidebar">

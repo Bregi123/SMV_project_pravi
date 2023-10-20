@@ -3,38 +3,61 @@
 session_start(); 
 // Start the session (this should be at the top of your PHP script)
 include 'database.php';
+include 'header.php';
+echo '<div class = "h2" >USER EDIT </div>';
 //session_start();
 
 if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
-    if($_SESSION['user_type'] != 'admin')
+    if($_SESSION['user_type'] != 'Admin')
     {
         header("location: login.php");
     exit();
     }
     
 }
-include_once 'database.php';
+
 $sql = "SELECT * FROM login";
 $result = mysqli_query($link, $sql);
 
-include_once 'database.php';
-$result = mysqli_query($link, "SELECT * FROM login");
 
-include_once 'database.php';
+
+
 if (count($_POST) > 0) {
-    mysqli_query($link, "UPDATE login SET id_login='" . $_POST['id_login'] . "', name='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', user_type='" . $_POST['user_type'] . "', username='" . $_POST['username'] . "', email='" . $_POST['email'] . "' WHERE id_login='" . $_POST['id_login'] . "'");
-    $message = "Record Modified Successfully";
+    if ($_POST['id_login'] != ''){
+
+        mysqli_query($link, "UPDATE login SET name='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', user_type='" . $_POST['user_type'] . "', username='" . $_POST['username'] . "', email='" . $_POST['email'] . "' WHERE id_login='" . $_POST['id_login'] . "'");
+    } 
+    else {
+        mysqli_query($link, "INSERT INTO login ( name, surname , user_type, username, password ,email ) VALUES ('" . $_POST['name'] . "', '" . $_POST['surname'] . "', '" . $_POST['user_type'] . "', '" . $_POST['username'] . "', '12345', '" . $_POST['email'] . "')");
+    }
+    header("Location: User_management.php");
+    exit;
 }
 
-if (isset($_GET['id_login'])) {
-    $result = mysqli_query($link, "SELECT * FROM login WHERE id_login='" . $_GET['id_login'] . "'");
+if (isset($_GET['user_id'])) {
+    $result = mysqli_query($link, "SELECT * FROM login WHERE id_login='" . $_GET['user_id'] . "'");
     $row = mysqli_fetch_array($result);
+
+    if (!empty($row)) {
+        $id_login = $row['id_login'];
+        $username = $row['username'];
+        $name = $row['name'];
+        $surname = $row['surname'];
+        $user_type = $row['user_type'];
+        $email = $row['email'];
+    } else {
+        // Handle the case where the record is not found or $row is null
+        $message = "Record not found"; // You can set an appropriate message
+    }
 }
-if (!empty($row)) {
-    // You can access the values in $row safely
-} else {
-    // Handle the case where the record is not found or $row is null
-    $message = "Record not found"; // You can set an appropriate message
+
+else {
+    $id_login = '';
+    $username = '';
+    $name = '';
+    $surname = '';
+    $user_type = '';
+    $email = '';
 }
 
  
@@ -43,65 +66,26 @@ if (!empty($row)) {
 <head>
     <title>Your Page</title>
     <style>
-              body {
-  background-color:#d3d3d3;
-  padding-top: 65px;
-  padding-left: 20px;
-  padding-right: 40px;
-}
-        #Button{
-            font-family: 'Trebuchet MS', sans-serif;
-            background-color: #d3d3d3; /* Change the background color as desired */
-            color: #333; /* Change the text color as desired */
-            border: none;
-            border-radius: 3px; /* Rounded corners */
-            padding: 2px 4px; /* Adjust padding as needed */
-            cursor: pointer;
-            font-weight: bold;
-            
-            
 
-        }
-        #logoutButton {
-            background-color: #007BFF; /* Change the background color as desired */
-            color: #fff; /* Change the text color as desired */
-            border: none;
-            border-radius: 5px; /* Rounded corners */
-            padding: 10px 20px; /* Adjust padding as needed */
-            cursor: pointer;
-        }
-        /* Styles for the sidebar */
-        .sidebar {
-            width: 250px;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: -250px; /* Initially hidden */
-            background-color: #333;
-            color: white;
-            transition: left 0.3s;
+        .table_size{
+            width: 50%;
         }
 
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
+        .center_content{
+            padding-left : 300px;
+            font-family: "Arial", Gadget, sans-serif;
+            font-weight : bold;
+            letter-spacing: -0.8px;
+            word-spacing: 2px;
+            color: #0000FF;
+           
+           
+            font-style: normal;
+           
+           
 
-        .sidebar li {
-            padding: 15px;
         }
-
-        /* Styles for the button */
-        #toggleButton {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
+        
     </style>
 </head>
 
@@ -134,34 +118,54 @@ if (!empty($row)) {
     <button id="toggleButton">Toggle Navigation Bar</button>
     
     <form name="frmUser" method="post" action="">
-<div><?php if(isset($message)) { echo $message; } ?>
+<div class = "center_content"><?php if(isset($message)) { echo $message; } ?>
+
+<table class="table table_size"  >
+  <tbody>
+    <tr>
+      <td>Username:</td>
+      <td><input type="hidden" name="id_login" class="txtField" value="<?php echo $id_login; ?>">
+            <input type="text" name="username"  value="<?php echo $username; ?>">
+        </td>
+    </tr>
+    <tr>
+      <td>First Name:</td>
+      <td><input type="text" name="name" class="txtField" value="<?php echo $name; ?>">
+        </td>
+    </tr>
+    <tr>  
+      <td>Last Name :</td>
+      <td><input type="text" name="surname" class="txtField" value="<?php echo $surname; ?>"></td>
+    </tr>
+    <tr>    
+      <td>User Type:</td>
+      <td>
+        <select name="user_type" class="txtField">
+            <option value="Professor" <?php if ($user_type == "Professor") {echo 'selected=true';} ?>>Professor</option>
+            <option value="Student" <?php if ($user_type == "Student") {echo 'selected=true';} ?>>Student</option>
+            <option value="Admin" <?php if ($user_type == "Admin") {echo 'selected=true';} ?>>Admin</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td><input type="text" name="email" class="txtField" value="<?php echo $email; ?>"></td>
+    </tr>
+
+  </tbody>
+</table>
+
+    
+
+
+
+
+
+
+
+<input  type="submit" name="submit" value="Submit" class="btn btn-primary" >
+
 </div>
-<div style="padding-bottom:5px;">
-<a href="retrieve.php">Employee List</a>
-</div>
-Username: <br>
-<input type="hidden" name="id_login" class="txtField" value="<?php echo $row['id_login']; ?>">
-<input type="text" name="name"  value="<?php echo $row['name']; ?>">
-<br>
-First Name: <br>
-<input type="text" name="name" class="txtField" value="<?php echo $row['']; ?>">
-<br>
-Last Name :<br>
-<input type="text" name="surname" class="txtField" value="<?php echo $row['surname']; ?>">
-<br>
-City:<br>
-<input type="text" name="username" class="txtField" value="<?php echo $row['username']; ?>">
-User Type:<br>
-<input type="text" name="user_type" class="txtField" value="<?php echo $row['user_type']; ?>">
-<br>
-<br>
-Email:<br>
-<input type="text" name="email" class="txtField" value="<?php echo $row['email']; ?>">
-
-<br>
-<input type="submit" name="submit" value="Submit" class="buttom">
-
-
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>

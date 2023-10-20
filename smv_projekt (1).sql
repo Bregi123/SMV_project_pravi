@@ -34,26 +34,19 @@ CREATE TABLE `login` (
   `username` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `user_type` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `password` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(30) COLLATE utf8mb4_general_ci NOT NULL
+  `email` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `professor` boolean NOT NULL  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Odloži podatke za tabelo `login`
 --
 
-INSERT INTO `login` (`id_login`, `name`, `surname`, `username`, `user_type`, `password`, `email`) VALUES
-(1, 'luka', 'Bombek', 'kljukec', 'admin', '12345678', 'luka@gmail.com'),
-(2, 't', 't', 't', 't', 't', 't');
+INSERT INTO `login` (`id_login`, `name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES
+(1, 'luka', 'Bombek', 'kljukec', 'admin', '12345678', 'luka@gmail.com', false ),
+(2, 't', 't', 't', 't', 't', 't', false );
 
 -- --------------------------------------------------------
-
---
--- Struktura tabele `professors`
---
-
-CREATE TABLE `professors` (
-  `id_professor` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -63,8 +56,8 @@ CREATE TABLE `professors` (
 
 CREATE TABLE `professors-subjects` (
   `id_professor` int NOT NULL,
-  `id_subjects` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_subject` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -74,8 +67,8 @@ CREATE TABLE `professors-subjects` (
 
 CREATE TABLE `students` (
   `id_student` int NOT NULL,
-  `id_subjects` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_subject` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -84,15 +77,15 @@ CREATE TABLE `students` (
 --
 
 CREATE TABLE `subjects` (
-  `id_predmeta` int NOT NULL,
-  `predmet` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_subject` int NOT NULL,
+  `subject_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Odloži podatke za tabelo `subjects`
 --
 
-INSERT INTO `subjects` (`id_predmeta`, `predmet`) VALUES
+INSERT INTO `subjects` (`id_subject`, `subject_name`) VALUES
 (1, 'SLO'),
 (2, 'MAT'),
 (3, 'ANG'),
@@ -112,30 +105,25 @@ ALTER TABLE `login`
   ADD PRIMARY KEY (`id_login`);
 
 --
--- Indeksi tabele `professors`
---
-ALTER TABLE `professors`
-  ADD PRIMARY KEY (`id_professor`);
 
---
 -- Indeksi tabele `professors-subjects`
 --
 ALTER TABLE `professors-subjects`
-  ADD KEY `profesorji` (`id_professor`),
-  ADD KEY `suvject` (`id_subjects`);
+  ADD PRIMARY KEY  (`id_professor`,`id_subject`);
+  
 
 --
 -- Indeksi tabele `students`
 --
 ALTER TABLE `students`
-  ADD KEY `subject` (`id_subjects`),
-  ADD KEY `student` (`id_student`);
+  ADD PRIMARY KEY  (`id_subject` , `id_student`);
+  
 
 --
 -- Indeksi tabele `subjects`
 --
 ALTER TABLE `subjects`
-  ADD PRIMARY KEY (`id_predmeta`);
+  ADD PRIMARY KEY (`id_subject`);
 
 --
 -- AUTO_INCREMENT zavrženih tabel
@@ -147,40 +135,28 @@ ALTER TABLE `subjects`
 ALTER TABLE `login`
   MODIFY `id_login` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
---
--- AUTO_INCREMENT tabele `professors`
---
-ALTER TABLE `professors`
-  MODIFY `id_professor` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT tabele `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id_predmeta` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_subject` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
--- Omejitve tabel za povzetek stanja
---
 
---
--- Omejitve za tabelo `professors`
---
-ALTER TABLE `professors`
-  ADD CONSTRAINT `uporabnik` FOREIGN KEY (`id_professor`) REFERENCES `login` (`id_login`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
---
 -- Omejitve za tabelo `professors-subjects`
 --
 ALTER TABLE `professors-subjects`
-  ADD CONSTRAINT `suvject` FOREIGN KEY (`id_subjects`) REFERENCES `subjects` (`id_predmeta`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `subject` FOREIGN KEY (`id_subject`) REFERENCES `subjects` (`id_subject`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `professors-subjects`
+  ADD CONSTRAINT `professor` FOREIGN KEY (`id_professor`) REFERENCES `login` (`id_login`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Omejitve za tabelo `students`
 --
 ALTER TABLE `students`
-  ADD CONSTRAINT `student` FOREIGN KEY (`id_student`) REFERENCES `login` (`id_login`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `subject` FOREIGN KEY (`id_subjects`) REFERENCES `subjects` (`id_predmeta`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `FK_student` FOREIGN KEY (`id_student`) REFERENCES `login` (`id_login`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `FK_STUD_subject` FOREIGN KEY (`id_subject`) REFERENCES `subjects` (`id_subject`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

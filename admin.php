@@ -2,12 +2,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 <?php
+include 'header.php';
 // Start the session (this should be at the top of your PHP script)
 session_start();
   
     //exit();
     if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
-        if($_SESSION['user_type'] != 'admin')
+        if($_SESSION['user_type'] != 'Admin')
         {
             header("location: login.php");
         exit();
@@ -31,51 +32,7 @@ session_start();
             cursor: pointer;
         }
 
-        #Button{
-            font-family: 'Trebuchet MS', sans-serif;
-            background-color: #d3d3d3; /* Change the background color as desired */
-            color: #333; /* Change the text color as desired */
-            border: none;
-            border-radius: 3px; /* Rounded corners */
-            padding: 2px 4px; /* Adjust padding as needed */
-            cursor: pointer;
-            font-weight: bold;
-            
-            
-
-        }
-        /* Styles for the sidebar */
-        .sidebar {
-            width: 250px;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: -250px; /* Initially hidden */
-            background-color: #333;
-            color: white;
-            transition: left 0.3s;
-        }
-
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .sidebar li {
-            padding: 10px;
-        }
-
-        /* Styles for the button */
-        #toggleButton {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
+       
     </style>
 </head>
 <body >

@@ -5,7 +5,7 @@ session_start();
   
     //exit();
     if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
-        if($_SESSION['user_type'] != 'professor')
+        if($_SESSION['user_type'] != 'Professor')
         {
             header("location: login.php");
         exit();
