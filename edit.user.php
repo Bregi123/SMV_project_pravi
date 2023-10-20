@@ -141,10 +141,10 @@ if (!empty($row)) {
 </div>
 Username: <br>
 <input type="hidden" name="id_login" class="txtField" value="<?php echo $row['id_login']; ?>">
-<input type="text" name="userid"  value="<?php echo $row['userid']; ?>">
+<input type="text" name="name"  value="<?php echo $row['name']; ?>">
 <br>
 First Name: <br>
-<input type="text" name="name" class="txtField" value="<?php echo $row['name']; ?>">
+<input type="text" name="name" class="txtField" value="<?php echo $row['']; ?>">
 <br>
 Last Name :<br>
 <input type="text" name="surname" class="txtField" value="<?php echo $row['surname']; ?>">
