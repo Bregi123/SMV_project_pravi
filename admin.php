@@ -36,25 +36,9 @@ session_start();
     </style>
 </head>
 <body >
-    
-    <div class="sidebar" id="sidebar">
-        <!-- Sidebar content goes here -->
-        <ul>
-            <li></li>
-            <li></li>
-            <li style="margin-top: 20px;"><button  onclick="location.href = 'admin.php'" ; ; id="button">Home</li>
-            <li><button  onclick="location.href = 'User_management.php'" ; id="button">Manage Users</button></li>
-            <li>Subject management </li>
-            <li>Account</li>
-        </ul>
-        <button  onclick="location.href = 'logout.php'" ; id="logoutButton">Logout</button>
-        <div class="sidebar-image">
-            <a style= "position: absolute; bottom: 40px; left: 10px; width: 50px; height: 50px;">ADMIN</a>
-        <img src="pfp.jpg" alt="Image Description" style="position: absolute; bottom: 20px; left: 10px; width: 50px; height: 50px;">
-    </div>
-    </div>
-    
-    <button id="toggleButton">Toggle Navigation Bar</button>
+<?php
+include 'navigation_bar.php';
+?>
 
     <script>
         const sidebar = document.getElementById("sidebar");

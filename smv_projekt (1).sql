@@ -54,7 +54,8 @@ INSERT INTO `login` (`id_login`, `name`, `surname`, `username`, `user_type`, `pa
 -- Struktura tabele `professors-subjects`
 --
 
-CREATE TABLE `professors-subjects` (
+CREATE TABLE `professors_subjects` (
+  `id` int NOT NULL,
   `id_professor` int NOT NULL,
   `id_subject` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -66,6 +67,7 @@ CREATE TABLE `professors-subjects` (
 --
 
 CREATE TABLE `students` (
+  `id` int NOT NULL,
   `id_student` int NOT NULL,
   `id_subject` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -108,15 +110,15 @@ ALTER TABLE `login`
 
 -- Indeksi tabele `professors-subjects`
 --
-ALTER TABLE `professors-subjects`
-  ADD PRIMARY KEY  (`id_professor`,`id_subject`);
+ALTER TABLE `professors_subjects`
+  ADD PRIMARY KEY  (`id`);
   
 
 --
 -- Indeksi tabele `students`
 --
 ALTER TABLE `students`
-  ADD PRIMARY KEY  (`id_subject` , `id_student`);
+  ADD PRIMARY KEY  (`id`);
   
 
 --
@@ -142,13 +144,17 @@ ALTER TABLE `login`
 ALTER TABLE `subjects`
   MODIFY `id_subject` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
+ALTER TABLE `students`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
+ALTER TABLE `professors_subjects`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 -- Omejitve za tabelo `professors-subjects`
 --
-ALTER TABLE `professors-subjects`
+ALTER TABLE `professors_subjects`
   ADD CONSTRAINT `subject` FOREIGN KEY (`id_subject`) REFERENCES `subjects` (`id_subject`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE `professors-subjects`
+ALTER TABLE `professors_subjects`
   ADD CONSTRAINT `professor` FOREIGN KEY (`id_professor`) REFERENCES `login` (`id_login`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --

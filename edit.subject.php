@@ -4,7 +4,7 @@ session_start();
 // Start the session (this should be at the top of your PHP script)
 include 'database.php';
 include 'header.php';
-echo '<div class = "h2" >USER EDIT </div>';
+echo '<div class = "h2" >SUBJECT EDIT </div>';
 //session_start();
 
 if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
@@ -20,42 +20,40 @@ if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
 
 
 
-if (count($_POST) > 0) {
-    if ($_POST['id_login'] != ''){
 
-        mysqli_query($link, "UPDATE login SET name='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', user_type='" . $_POST['user_type'] . "', username='" . $_POST['username'] . "' WHERE id_login='" . $_POST['id_login'] . "'");
-        header("Location: User_management.php");
+if (count($_POST) > 0) {
+    if ($_POST['id_subject'] != ''){
+
+        mysqli_query($link, "UPDATE subjects SET subject_name='" . $_POST['subject_name'] . "' WHERE id_subject='" . $_POST['id_subject'] . "'");
+        header("Location: Subject_management.php");
         exit;
     } 
     
     else {
-        $result = mysqli_query($link, "SELECT * FROM login WHERE email='" . $_POST['email'] . "'");
+        $result = mysqli_query($link, "SELECT * FROM subjects WHERE subject_name='" . $_POST['subject_name'] . "'");
         $row = mysqli_fetch_array($result);
 
         if (empty($row)) {
-            mysqli_query($link, "INSERT INTO login ( name, surname , user_type, username, password ,email ) VALUES ('" . $_POST['name'] . "', '" . $_POST['surname'] . "', '" . $_POST['user_type'] . "', '" . $_POST['username'] . "', '12345', '" . $_POST['email'] . "')");
-            header("Location: User_management.php");
+            mysqli_query($link, "INSERT INTO subjects ( subject_name ) VALUES ('" . $_POST['subject_name'] . "')");
+            header("Location: Subject_management.php");
             exit;
         }
         else {
-            $message = "User already exists!";
+            $message = "Subject already exists!";
             
         }
     }
     
 }
 
-if (isset($_GET['user_id'])) {
-    $result = mysqli_query($link, "SELECT * FROM login WHERE id_login='" . $_GET['user_id'] . "'");
+if (isset($_GET['subject_id'])) {
+    $result = mysqli_query($link, "SELECT * FROM Subjects WHERE id_subject='" . $_GET['subject_id'] . "'");
     $row = mysqli_fetch_array($result);
 
     if (!empty($row)) {
-        $id_login = $row['id_login'];
-        $username = $row['username'];
-        $name = $row['name'];
-        $surname = $row['surname'];
-        $user_type = $row['user_type'];
-        $email = $row['email'];
+        $id_subject= $row['id_subject'];
+        $subject_name = $row['subject_name'];
+       
     } else {
         // Handle the case where the record is not found or $row is null
         $message = "Record not found"; // You can set an appropriate message
@@ -63,19 +61,16 @@ if (isset($_GET['user_id'])) {
 }
 
 else {
-    $id_login = '';
-    $username = '';
-    $name = '';
-    $surname = '';
-    $user_type = '';
-    $email = '';
+    $id_subject = '';
+    $subject_name = '';
+    
 }
 
  
 ?>
 <html>
 <head>
-    <title>Edit User </title>
+    <title>Edit Subject</title>
     <style>
 
         .table_size{
@@ -110,34 +105,13 @@ include 'navigation_bar.php';
 <table class="table table_size"  >
   <tbody>
     <tr>
-      <td>Username:</td>
-      <td><input type="hidden" name="id_login" class="txtField" value="<?php echo $id_login; ?>">
-            <input type="text" name="username"  value="<?php echo $username; ?>">
+      <td>Subject Name :</td>
+      <td><input type="hidden" name="id_subject" class="txtField" value="<?php echo $id_subject; ?>">
+            <input type="text" name="subject_name"  value="<?php echo $subject_name; ?>">
         </td>
     </tr>
-    <tr>
-      <td>First Name:</td>
-      <td><input type="text" name="name" class="txtField" value="<?php echo $name; ?>">
-        </td>
-    </tr>
-    <tr>  
-      <td>Last Name :</td>
-      <td><input type="text" name="surname" class="txtField" value="<?php echo $surname; ?>"></td>
-    </tr>
-    <tr>    
-      <td>User Type:</td>
-      <td>
-        <select name="user_type" class="txtField">
-            <option value="Professor" <?php if ($user_type == "Professor") {echo 'selected=true';} ?>>Professor</option>
-            <option value="Student" <?php if ($user_type == "Student") {echo 'selected=true';} ?>>Student</option>
-            <option value="Admin" <?php if ($user_type == "Admin") {echo 'selected=true';} ?>>Admin</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>Email:</td>
-      <td><input type="text" name="email" class="txtField" value="<?php echo $email; ?>"></td>
-    </tr>
+   
+    
 
   </tbody>
 </table>
@@ -152,7 +126,7 @@ include 'navigation_bar.php';
 
 <input  type="submit" name="submit" value="Submit" class="btn btn-primary" > 
 
-<button type="reset" onclick="location.href = 'User_management.php'"  class="btn btn-danger" >Cancel</button>
+<button type="reset" onclick="location.href = 'Subject_management.php'"  class="btn btn-danger" >Cancel</button>
    
 </div>
 </form>
