@@ -76,7 +76,7 @@ session_start();
             <li>classes</li>
             <li>Account</li>
         </ul>
-        <button  onclick="location.href = 'login.php'" ; id="logoutButton">Logout</button>
+        <button  onclick="location.href = 'logout.php'" ; id="logoutButton">Logout</button>
         <div class="sidebar-image">
             <a style= "position: absolute; bottom: 40px; left: 10px; width: 50px; height: 50px;">TEACHER</a>
         <img src="pfp.jpg" alt="Image Description" style="position: absolute; bottom: 20px; left: 10px; width: 50px; height: 50px;">
