@@ -20,14 +20,17 @@ $message_right='';
 if (count($_POST) > 0) {
     if ($_POST['professor'] != '') {
         
-        $sql = "SELECT * FROM professors_subjects ";
+        $sql = "SELECT * FROM subjects ";
         $subjects = mysqli_query($link, $sql);
         while ($row = mysqli_fetch_assoc($subjects)) {
+             
             $idSubject=$row["id_subject"];
             if (isset($_POST["subject".$idSubject])) {
+                 
                 $result = mysqli_query($link, "SELECT * FROM professors_subjects WHERE id_professor=".$_POST['professor']." and id_subject=".$idSubject);
                 $row = mysqli_fetch_array($result);
                 if (empty($row)) {
+            
                     mysqli_query($link, "INSERT INTO professors_subjects ( id_professor, id_subject ) VALUES ('" . $_POST['professor'] . "', '" . $idSubject . "')");
                 }
             }
@@ -72,7 +75,7 @@ while ($row = mysqli_fetch_assoc($subject_assignments)) {
 
    
     
-    echo '<form method="POST" action="Delete_student_assign.php">';
+    echo '<form method="POST" action="Delete_professor_asign.php">';
     echo '<input name="deleteID" value="'. $row["id"] .'" hidden></input>';
     echo '<td><button type="submit" name="delete-button" id="deleteBtn-' . $row["id"] . '" class="btn btn-danger">Delete</button></td>';
 

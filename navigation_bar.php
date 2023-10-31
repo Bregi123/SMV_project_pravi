@@ -11,7 +11,7 @@
     <li><button  onclick="location.href = 'Subject_management.php'" ; id="Button">Manage Subjects</button></li>
     <li><button  onclick="location.href = 'Professor_assign.php'" ; id="Button">Professor Subject Assignment</button></li>
     <li><button  onclick="location.href = 'Student_assign.php'" ; id="Button">Student Subject Assignment</button></li>
-    <li>Account</li>
+    
     
 </ul>
 <button  onclick="location.href = 'logout.php'" ; id="logoutButton">Logout</button>

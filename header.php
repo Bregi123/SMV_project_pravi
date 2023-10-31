@@ -36,6 +36,14 @@ text-align: center;
   padding-left: 20px;
   padding-right: 40px;
 }
+
+        a {
+            color: black;
+        }
+        a:link {
+            text-decoration: none;
+            
+                }
         #Button{
             font-family: 'Trebuchet MS', sans-serif;
             background-color: #d3d3d3; /* Change the background color as desired */

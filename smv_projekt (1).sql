@@ -83,6 +83,8 @@ CREATE TABLE `subjects` (
   `subject_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+CREATE TABLE materials( id_subject int NOT NULL, material_name varchar(255) NOT NULL, material_file varchar(255) NOT NULL );
 --
 -- Odloži podatke za tabelo `subjects`
 --

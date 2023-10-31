@@ -136,7 +136,7 @@ include 'navigation_bar.php';
     </tr>
     <tr>
       <td>Email:</td>
-      <td><input type="text" name="email" class="txtField" value="<?php echo $email; ?>"></td>
+      <td><input type="text" name="email" class="txtField" disabled= <?php if (isset($_GET['user_id'])) {echo "true";} else {echo "false";} ?> value="<?php echo $email; ?>"></td>
     </tr>
 
   </tbody>

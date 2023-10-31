@@ -18,7 +18,7 @@ session_start();
 ?>
 <html>
 <head>
-    <title>Your Page</title>
+    <title>Admin</title>
     <style>
               body {
   background-color:#d3d3d3;
