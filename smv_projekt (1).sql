@@ -96,9 +96,9 @@ INSERT INTO `subjects` (`id_subject`, `subject_name`) VALUES
 (4, 'NRP'),
 (5, 'RPR'),
 (6, 'NUP'),
-(7, 'NPP');
-(8, 'UPN');
-(9, 'ROB');
+(7, 'NPP'),
+(8, 'UPN'),
+(9, 'ROB'),
 (10, 'VVO');
 
 --
@@ -170,6 +170,11 @@ ALTER TABLE `students`
   ADD CONSTRAINT `FK_STUD_subject` FOREIGN KEY (`id_subject`) REFERENCES `subjects` (`id_subject`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
+ALTER TABLE `materials`
+  ADD CONSTRAINT `FK_subject_m` FOREIGN KEY (`id_subject`) REFERENCES `subjects` (`id_subject`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
@@ -234,9 +239,6 @@ INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `em
 -- Student 20
 INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Mia', 'Robinson', 'miarobinson20', 'Student', 'password20', 'mia@example.com', false);
 
--- Continue with similar INSERT statements for more students
--- Repeat this pattern for a total of 100 students
--- Student 21
 INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Ethan', 'Bennett', 'ethanbennett21', 'Student', 'password21', 'ethan@example.com', false);
 
 -- Student 22
