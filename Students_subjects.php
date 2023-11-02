@@ -4,8 +4,10 @@
 <?php
 
 include 'header.php';
+echo '<div class = "h2" >SUBJECTS</div>';
+include 'database.php';
 // Start the session (this should be at the top of your PHP script)
-session_start();
+
   
     //exit();
     if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
@@ -18,11 +20,16 @@ session_start();
     }
 
 //conncet the professor-subjects table
+// Get a list of subjects for the logged-in professor
+$sql = "SELECT s.id_subject, s.subject_name FROM subjects s JOIN students st ON s.id_subject = st.id_subject WHERE st.id_student = " . $_SESSION["user_id"];
+$subjects = mysqli_query($link, $sql);
 
+$sql = "SELECT subject_name FROM subjects";
+$all_subjects = mysqli_query($link, $sql);
 ?>
 <html>
 <head>
-    <title>Student</title>
+    <title> Student</title>
     <style>
               body {
   background-color:#d3d3d3;
@@ -42,7 +49,28 @@ session_start();
 <body >
 <?php
 include 'navigation_bar_s.php';
+
+//id_login != {$_SESSION['id_login']}
+
+echo '<div style = "width : 30%; padding:15px;">';
+echo '<table class="table table-striped">';
+echo '<tbody>';
+
+while ($row = mysqli_fetch_assoc($subjects )) {
+    echo '<tr>';
+    echo 'My subjects ';
+    echo '<td>' . $row["subject_name"] . '</td>';
+    echo '</tr>';
+}
+
+echo '</tbody>';
+echo '</table>';
+echo '</div>';
+
+
 ?>
+
+
 
     <script>
         const sidebar = document.getElementById("sidebar");

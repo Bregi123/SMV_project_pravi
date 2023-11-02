@@ -43,7 +43,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id_login`, `name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES
-(1, 'luka', 'Bombek', 'kljukec', 'admin', '12345678', 'luka@gmail.com', false ),
+(1, 'luka', 'Bombek', 'kljukec', 'A dmin', '12345678', 'luka@gmail.com', false ),
 (2, 't', 't', 't', 't', 't', 't', false );
 
 -- --------------------------------------------------------
@@ -476,3 +476,62 @@ INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `em
 
 -- Student 100
 INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Ethan', 'Cooper', 'ethancooper100', 'Student', 'password100', 'ethan@example.com', false);
+-- Professor 1
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('David', 'Smith', 'davidsmith1', 'Professor', 'password1', 'david@example.com', true);
+
+-- Professor 2
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Emily', 'Johnson', 'emilyjohnson2', 'Professor', 'password2', 'emily@example.com', true);
+
+-- Professor 3
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Daniel', 'Brown', 'danielbrown3', 'Professor', 'password3', 'daniel@example.com', true);
+
+-- Professor 4
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Olivia', 'Davis', 'oliviadavis4', 'Professor', 'password4', 'olivia@example.com', true);
+
+-- Professor 5
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('William', 'Wilson', 'williamwilson5', 'Professor', 'password5', 'william@example.com', true);
+
+-- Professor 6
+
+
+-- Professor 7
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('James', 'Miller', 'jamesmiller7', 'Professor', 'password7', 'james@example.com', true);
+
+-- Professor 8
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Charlotte', 'Harris', 'charlotteharris8', 'Professor', 'password8', 'charlotte@example.com', true);
+
+-- Professor 9
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Benjamin', 'Moore', 'benjaminmoore9', 'Professor', 'password9', 'benjamin@example.com', true);
+
+-- Professor 10
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Mia', 'Taylor', 'miataylor10', 'Professor', 'password10', 'mia@example.com', true);
+
+-- Professor 11
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Liam', 'Anderson', 'liamanderson11', 'Professor', 'password11', 'liam@example.com', true);
+
+-- Professor 12
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Ava', 'Clark', 'avaclark12', 'Professor', 'password12', 'ava@example.com', true);
+
+-- Professor 13
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Noah', 'Turner', 'noahturner13', 'Professor', 'password13', 'noah@example.com', true);
+
+-- Professor 14
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Isabella', 'Wright', 'isabellawright14', 'Professor', 'password14', 'isabella@example.com', true);
+
+-- Professor 15
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('James', 'Martin', 'jamesmartin15', 'Professor', 'password15', 'james@example.com', true);
+
+-- Professor 16
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Sophia', 'Hill', 'sophiahill16', 'Professor', 'password16', 'sophia@example.com', true);
+
+-- Professor 17
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Ethan', 'Adams', 'ethanadams17', 'Professor', 'password17', 'ethan@example.com', true);
+
+-- Professor 18
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Olivia', 'Thomas', 'oliviathomas18', 'Professor', 'password18', 'olivia@example.com', true);
+
+-- Professor 19
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('William', 'Garcia', 'williamgarcia19', 'Professor', 'password19', 'william@example.com', true);
+
+-- Professor 20
+INSERT INTO `login` (`name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES ('Charlotte', 'King', 'charlotteking20', 'Professor', 'password20', 'charlotte@example.com', true);
