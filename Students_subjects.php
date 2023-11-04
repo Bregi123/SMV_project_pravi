@@ -51,7 +51,7 @@ $all_subjects = mysqli_query($link, $sql);
 include 'navigation_bar_s.php';
 
 //id_login != {$_SESSION['id_login']}
-
+echo '<div style = "width : 100%; display: flex;">';
 echo '<div style = "width : 30%; padding:15px;">';
 echo '<table class="table table-striped">';
 echo '<tbody>';
@@ -67,6 +67,21 @@ echo '</tbody>';
 echo '</table>';
 echo '</div>';
 
+
+echo '<div style = "width : 30%; padding:15px;">';
+echo '<table class="table table-striped">';
+echo '<tbody>';
+echo 'Subjects';
+while ($row = mysqli_fetch_assoc($all_subjects )) {
+    echo '<tr>';
+
+    echo '<td>' . $row["subject_name"] . '</td>';
+    echo '</tr>';
+}
+
+echo '</tbody>';
+echo '</table>';
+echo '</div>';
 
 ?>
 
