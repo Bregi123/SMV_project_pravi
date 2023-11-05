@@ -53,7 +53,7 @@ if (count($_POST) > 0) {
                 if ( $_POST['password'] ==  $_POST['password2'] )
                 {
                     echo "juhu9";
-                    $sql =  "INSERT INTO login ( firstname, surname , user_type, username, mypassword ,email ) VALUES ('" . $_POST['name'] . "', '" . $_POST['surname'] . "', 'Student', '" . $_POST['username'] . "', '" . $_POST['password'] . "', '" . $_POST['email'] . "')";
+                    $sql =  "INSERT INTO login ( firstname, surname , user_type, username, mypassword ,email, professor ) VALUES ('" . $_POST['name'] . "', '" . $_POST['surname'] . "', 'Student', '" . $_POST['username'] . "', '" . $_POST['password'] . "', '" . $_POST['email'] . "',false)";
                     echo $sql;
                     mysqli_query($link,$sql);
                     echo "juhu10";
