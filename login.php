@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <button class="dropbtn">Menu</button>
       <div class="dropdown-content">
         <a href="Home_page.php">Home</a>
-        <a href="info.html">Info</a>
+       
       </div>
     </div>
     <div style="margin-top: 100px; text-align: center;">
