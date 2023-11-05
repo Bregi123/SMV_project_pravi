@@ -10,6 +10,6 @@ if (!session_status() == PHP_SESSION_NONE && !session_status() == PHP_SESSION_DI
 }
 else
 {
-    header('LOCATION: Login.php');
+    header('LOCATION: login.php');
 }
 ?>
