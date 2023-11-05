@@ -45,6 +45,7 @@ if (count($_POST) > 0) {
             {
                 if ( $_POST['password'] ==  $_POST['password2'] )
                 {
+                    $message = "juhu";
                     mysqli_query($link, "INSERT INTO login ( name, surname , user_type, username, password ,email ) VALUES ('" . $_POST['name'] . "', '" . $_POST['surname'] . "', 'Student', '" . $_POST['username'] . "', '" . $_POST['password'] . "', '" . $_POST['email'] . "')");
                     header("Location: login.php");
                     exit;
