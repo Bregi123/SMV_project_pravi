@@ -40,13 +40,13 @@ echo '<div class = "h2" >REGISTER </div>';
 
 
 
-echo 'start';
 
-echo "juhu1";
+
+
 if (count($_POST) > 0) {
-    echo "juhu2";
+  
     if ($_POST['id_login'] != ''){
-        echo "juhu3";
+      
         if ( $_POST['password']!="")
         {
             if ( $_POST['password'] ==  $_POST['password2'] )
@@ -71,18 +71,26 @@ if (count($_POST) > 0) {
     else {
        echo "juhu4";
         $result = mysqli_query($link, "SELECT * FROM login WHERE email='" . $_POST['email'] . "'");
+        echo "juhu5";
         $row = mysqli_fetch_array($result);
+        echo "juhu6";
 
         if (empty($row))
          {
+            echo "juhu7";
             if ( $_POST['password']!="")
             {
+                echo "juhu8";
                 if ( $_POST['password'] ==  $_POST['password2'] )
                 {
-                    $message = "juhu";
+                    echo "juhu9";
+                    
                     mysqli_query($link, "INSERT INTO login ( name, surname , user_type, username, password ,email ) VALUES ('" . $_POST['name'] . "', '" . $_POST['surname'] . "', 'Student', '" . $_POST['username'] . "', '" . $_POST['password'] . "', '" . $_POST['email'] . "')");
+                    echo "juhu10";
                     header("Location: login.php");
+                    echo "juhu11";
                     exit;
+                    echo "juhu12";
                 }
                 else
                 {
