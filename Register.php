@@ -38,29 +38,29 @@ if (count($_POST) > 0) {
     } 
     
     else {
-       echo "juhu4";
+     
         $result = mysqli_query($link, "SELECT * FROM login WHERE email='" . $_POST['email'] . "'");
-        echo "juhu5";
+   
         $row = mysqli_fetch_array($result);
-        echo "juhu6";
+ 
 
         if (empty($row))
          {
-            echo "juhu7";
+        
             if ( $_POST['password']!="")
             {
-                echo "juhu8";
+              
                 if ( $_POST['password'] ==  $_POST['password2'] )
                 {
-                    echo "juhu9";
+               
                     $sql =  "INSERT INTO login ( firstname, surname , user_type, username, mypassword ,email ) VALUES ('" . $_POST['name'] . "', '" . $_POST['surname'] . "', 'Student', '" . $_POST['username'] . "', '" . $_POST['password'] . "', '" . $_POST['email'] . "')";
                     echo $sql;
                     mysqli_query($link,$sql);
-                    echo "juhu10";
+                  
                     header("Location: login.php");
-                    echo "juhu11";
+                   
                     exit;
-                    echo "juhu12";
+                
                 }
                 else
                 {
@@ -106,7 +106,7 @@ else {
     $email = '';
 }
 
-echo 'stop';
+
 ?>
 
 <html>
