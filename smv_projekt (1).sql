@@ -25,7 +25,12 @@ SET time_zone = "+00:00";
 
 --
 -- Struktura tabele `login`
---
+DROP TABLE  `materials`; 
+DROP TABLE  `assignments`; 
+DROP TABLE  `students`; 
+DROP TABLE  `professors_subjects`; 
+DROP TABLE  `subjects`; 
+DROP TABLE  `login`; 
 
 CREATE TABLE `login` (
   `id_login` int NOT NULL,
@@ -43,8 +48,8 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id_login`, `name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES
-(1, 'luka', 'Bombek', 'kljukec', 'A dmin', '12345678', 'luka@gmail.com', 0),
-(2, 't', 't', 't', 't', 't', 't', 0),
+(1, 'luka', 'Bombek', 'kljukec', 'Admin', '12345678', 'luka@gmail.com', 0),
+(2, 'Matevz', 'Berginc', 'Professor', 'Professor', 't', 't@gmail.com', 1),
 (3, 'John', 'Smith', 'johnsmith1', 'Student', 'password1', 'john@example.com', 0),
 (4, 'Emma', 'Johnson', 'emmajohnson2', 'Student', 'password2', 'emma@example.com', 0),
 (5, 'Michael', 'Brown', 'michaelbrown3', 'Student', 'password3', 'michael@example.com', 0),
@@ -172,11 +177,20 @@ INSERT INTO `login` (`id_login`, `name`, `surname`, `username`, `user_type`, `pa
 --
 
 CREATE TABLE `materials` (
+  `id` int NOT NULL,
   `id_subject` int NOT NULL,
   `material_name` varchar(255) NOT NULL,
   `material_file` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+CREATE TABLE `assignments` (
+  `id` int NOT NULL,
+  `id_subject` int NOT NULL,
+  `id_student` int NOT NULL,
+  `assignment_name` varchar(255) NOT NULL,
+  `assignment_file` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- --------------------------------------------------------
 
 --
@@ -204,6 +218,10 @@ CREATE TABLE `students` (
 --
 -- Odloži podatke za tabelo `students`
 --
+INSERT INTO `professors_subjects` (`id`, `id_professor`, `id_subject`) VALUES
+(1, 2, 8 ),
+(2, 2, 5 );
+
 
 INSERT INTO `students` (`id`, `id_student`, `id_subject`) VALUES
 (3, 3, 8),
@@ -349,7 +367,11 @@ ALTER TABLE `login`
 -- Indeksi tabele `materials`
 --
 ALTER TABLE `materials`
-  ADD KEY `FK_subject_m` (`id_subject`);
+  ADD PRIMARY KEY  (`id`);
+
+  ALTER TABLE `assignments`
+  ADD PRIMARY KEY  (`id`);
+
 
 --
 -- Indeksi tabele `professors_subjects`
@@ -383,6 +405,11 @@ ALTER TABLE `subjects`
 ALTER TABLE `login`
   MODIFY `id_login` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
+ALTER TABLE `materials`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+--
+ALTER TABLE `assignments`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 --
 -- AUTO_INCREMENT tabele `professors_subjects`
 --
@@ -410,6 +437,12 @@ ALTER TABLE `subjects`
 --
 ALTER TABLE `materials`
   ADD CONSTRAINT `FK_subject_m` FOREIGN KEY (`id_subject`) REFERENCES `subjects` (`id_subject`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `assignments`
+  ADD CONSTRAINT `FK_subject_a` FOREIGN KEY (`id_subject`) REFERENCES `subjects` (`id_subject`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `assignments`
+  ADD CONSTRAINT `FK_student_a` FOREIGN KEY (`id_student`) REFERENCES `login` (`id_login`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Omejitve za tabelo `professors_subjects`

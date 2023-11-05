@@ -20,8 +20,8 @@
 </div>
 
 <div class="sidebar-image">
-<a style= "position: absolute; bottom: 40px; left: 10px; width: 50px; height: 50px;">ADMIN</a>
-<img src="pfp.jpg" alt="Image Description" style="position: absolute; bottom: 20px; left: 10px; width: 50px; height: 50px;">
+<a style= "position: fixed; bottom: 40px; left: 10px; width: 50px; height: 50px;">ADMIN</a>
+<img src="pfp.jpg" alt="Image Description" style="position: fixed; bottom: 20px; left: 10px; width: 50px; height: 50px;">
 </div>
 
 

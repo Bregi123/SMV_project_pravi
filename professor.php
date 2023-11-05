@@ -40,6 +40,7 @@ session_start();
     </style>
 </head>
 <body >
+<img src="welcome_professor.jpg" width = "100%">
 <?php
 include 'navigation_bar_prof.php';
 ?>

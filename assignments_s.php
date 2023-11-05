@@ -4,14 +4,14 @@
 <?php
 
 include 'header.php';
-echo '<div class = "h2" >EDUCATIONAL MATERIALS </div>';
+echo '<div class = "h2" >ASSIGNMENTS </div>';
 include 'database.php';
 // Start the session (this should be at the top of your PHP script)
 
   
     //exit();
     if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
-        if($_SESSION['user_type'] != 'Professor')
+        if($_SESSION['user_type'] != 'Student')
         {
             header("location: login.php");
         exit();
@@ -19,10 +19,11 @@ include 'database.php';
         
     }
 
+
 //conncet the professor-subjects table
 if (isset($_POST['idsubject'])) {
 
-    if ( $_POST['material_name'] != "") {
+    if ( $_POST['assignment_name'] != "") {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
             $uploadsDirectory = 'downloads/';
 
@@ -30,22 +31,30 @@ if (isset($_POST['idsubject'])) {
             if (!file_exists($uploadsDirectory)) {
                 mkdir($uploadsDirectory, 0755, true);
             }
+            $file_type = substr($_FILES['file']['name'], strripos($_FILES['file']['name'], ".")) ;
+            
+            $user = mysqli_query($link, "SELECT * FROM login WHERE id_login=" . $_SESSION['user_id']);
+            $userrow = mysqli_fetch_array($user);
 
-            $targetFile = $uploadsDirectory . basename($_POST['idsubject'] . "_" . $_FILES['file']['name']);
+            $targetFile = $uploadsDirectory . basename( $userrow['surname'] . " " .  $userrow['name'] .  " - " . $_POST['assignment_name'] . $file_type );
 
             if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {
-                $result = mysqli_query($link, "SELECT * FROM materials WHERE id_subject=" . $_POST['idsubject'] . " AND material_file ='" . $_POST['idsubject'] . "_" . $_FILES['file']['name'] . "' ");
+                $result = mysqli_query($link, "SELECT * FROM assignments WHERE id_subject=" . $_POST['idsubject'] . " AND id_student = " . $_SESSION['user_id'] . " AND assignment_file = '" . $userrow['surname'] . " " .  $userrow['name'] .  " - " . $_POST['assignment_name'] . $file_type . "' ");
                 $row = mysqli_fetch_array($result);
 
+                
+              
+                 
+            
                 if (empty($row)) {
-                    mysqli_query($link, "INSERT INTO materials ( id_subject, material_name, material_file) VALUES ('" . $_POST['idsubject'] . "', '" . $_POST['material_name'] . "', '" . $_POST['idsubject'] . "_" . $_FILES['file']['name'] . "')");
-                    header("Location: materials.php?idsubject=". $_POST['idsubject']);
+
+                    mysqli_query($link, "INSERT INTO assignments ( id_subject,id_student, assignment_name, assignment_file) VALUES (" . $_POST['idsubject'] . ", " . $_SESSION['user_id'] . ", '" . $_POST['assignment_name'] . "', '" . $userrow['surname'] . " " .  $userrow['name'] .  " - " . $_POST['assignment_name'] . $file_type . "')");
+                    header("Location: assignments_s.php?idsubject=". $_POST['idsubject']);
                   
                     exit;
                 }
                 else {
-                    mysqli_query($link, "UPDATE materials SET material_name='" . $_POST['material_name'] . "' WHERE id_subject=" . $_POST['idsubject'] . " AND material_file ='" . $_POST['idsubject'] . "_" . $_FILES['file']['name'] . "' ");
-                    header("Location: materials.php?idsubject=". $_POST['idsubject']);
+                   header("Location: assignments_s.php?idsubject=". $_POST['idsubject']);
                     
                     exit;
                     
@@ -58,13 +67,13 @@ if (isset($_POST['idsubject'])) {
             }
         }
     } else {
-        echo '<div class="alert alert-danger">Enter material name </div>';
+        echo '<div class="alert alert-danger">Enter assignment name </div>';
     }
 }
 ?>
 <html>
 <head>
-    <title> Professor</title>
+    <title> Student</title>
     <style>
               body {
   background-color:#d3d3d3;
@@ -83,12 +92,12 @@ if (isset($_POST['idsubject'])) {
 </head>
 <body >
 <?php
-include 'navigation_bar_prof.php';
+include 'navigation_bar_s.php';
 
 //id_login != {$_SESSION['id_login']}
 
 
-$sql = "SELECT s.id_subject , s.subject_name FROM subjects s JOIN professors_subjects p ON s.id_subject = p.id_subject WHERE p.id_professor = " . $_SESSION["user_id"]   ;
+$sql = "SELECT s.id_subject , s.subject_name FROM subjects s JOIN students st ON s.id_subject = st.id_subject WHERE st.id_student = " . $_SESSION["user_id"]   ;
 $subjects = mysqli_query($link, $sql);
 
 echo '<div style = "width : 100%; display: flex;">';
@@ -99,7 +108,7 @@ echo '<table class="table table-striped">';
 echo '<tbody>';
 while ($row = mysqli_fetch_assoc($subjects)) {
     echo '<tr>';
-    echo '<td> <a href ="materials.php?idsubject='. $row["id_subject"] . '" > ' . $row["subject_name"] . '</a><br></td>';
+    echo '<td> <a href ="assignments_s.php?idsubject='. $row["id_subject"] . '" > ' . $row["subject_name"] . '</a><br></td>';
     echo '</tr>';
 
 }
@@ -110,23 +119,25 @@ echo '</table>';
 echo '</div>';
 echo '<div style = "width : 30%; padding:15px;">';
 if (isset($_GET['idsubject'])) {
-    $result = mysqli_query($link, "SELECT * FROM materials WHERE id_subject=" . $_GET['idsubject'] );
+    $sql = "SELECT * FROM assignments WHERE id_subject=" . $_GET['idsubject'] . " AND id_student=" . $_SESSION["user_id"] ;
+    $assignments1 = mysqli_query($link, $sql );
 
 
     echo '<table class="table table-striped">';
     echo '<tbody>';
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($assignments1)) {
         echo '<tr>';
-        echo '<td> <a href ="downloads/'. $row["material_file"] . '" target="_blank"> ' . $row["material_name"] . '</a></td>';
+    
+        echo '<td> <a href ="downloads/'. $row["assignment_file"] . '" target="_blank"> ' . $row["assignment_name"] . '</a></td>';
         echo '</tr>';
 
-    }
+    }   
     echo '</tbody>';
     echo '</table>';
 }
 
 echo '</div>';
-echo '<div style = "width : 30%; padding:15px;">';
+echo '<div style = "width : 40%; padding:15px;">';
 if (isset($_GET['idsubject'])) {
 
     echo '<form action="#" method="post" enctype="multipart/form-data" class="mb-4">';
@@ -134,8 +145,8 @@ if (isset($_GET['idsubject'])) {
     echo '<tbody>';
 
     echo '<tr>';
-    echo '<td>Material name:</td>';
-    echo '<td><input size="45" type="text" name="material_name" class="txtField"></td>';
+    echo '<td>Assignment name:</td>';
+    echo '<td><input size="45" type="text" name="assignment_name" class="txtField"></td>';
     echo '</tr>';
 
     echo '<tr>';

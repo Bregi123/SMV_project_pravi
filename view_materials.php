@@ -4,7 +4,7 @@
 <?php
 
 include 'header.php';
-echo '<div class = "h2" >SUBJECTS</div>';
+echo '<div class = "h2" >EDUCATIONAL MATERIALS </div>';
 include 'database.php';
 // Start the session (this should be at the top of your PHP script)
 
@@ -20,12 +20,7 @@ include 'database.php';
     }
 
 //conncet the professor-subjects table
-// Get a list of subjects for the logged-in professor
-$sql = "SELECT s.id_subject, s.subject_name FROM subjects s JOIN students st ON s.id_subject = st.id_subject WHERE st.id_student = " . $_SESSION["user_id"];
-$subjects = mysqli_query($link, $sql);
 
-$sql = "SELECT subject_name FROM subjects";
-$all_subjects = mysqli_query($link, $sql);
 ?>
 <html>
 <head>
@@ -51,42 +46,48 @@ $all_subjects = mysqli_query($link, $sql);
 include 'navigation_bar_s.php';
 
 //id_login != {$_SESSION['id_login']}
+
+
+$sql = "SELECT s.id_subject , s.subject_name FROM subjects s JOIN students st ON s.id_subject = st.id_subject WHERE st.id_student = " . $_SESSION["user_id"]   ;
+$subjects = mysqli_query($link, $sql);
+
 echo '<div style = "width : 100%; display: flex;">';
-echo '<div style = "width : 30%; padding:15px;">';
+echo '<div style = "width : 30%;">';
+
+
 echo '<table class="table table-striped">';
 echo '<tbody>';
-
-while ($row = mysqli_fetch_assoc($subjects )) {
+while ($row = mysqli_fetch_assoc($subjects)) {
     echo '<tr>';
-    echo 'My subjects ';
-    echo '<td>' . $row["subject_name"] . '</td>';
+    echo '<td> <a href ="view_materials.php?idsubject='. $row["id_subject"] . '" > ' . $row["subject_name"] . '</a><br></td>';
     echo '</tr>';
-}
 
+}
 echo '</tbody>';
 echo '</table>';
+
+
 echo '</div>';
-
-
 echo '<div style = "width : 30%; padding:15px;">';
-echo '<table class="table table-striped">';
-echo '<tbody>';
-echo 'Subjects';
+if (isset($_GET['idsubject'])) {
+    $result = mysqli_query($link, "SELECT * FROM materials WHERE id_subject=" . $_GET['idsubject'] );
 
-while ($row = mysqli_fetch_assoc($all_subjects )) {
-    echo '<tr>';
 
-    echo '<td>' . $row["subject_name"] . '</td>';
-    echo '</tr>';
+    echo '<table class="table table-striped">';
+    echo '<tbody>';
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo '<tr>';
+        echo '<td> <a href ="downloads/'. $row["material_file"] . '" target="_blank"> ' . $row["material_name"] . '</a></td>';
+        echo '</tr>';
+
+    }
+    echo '</tbody>';
+    echo '</table>';
 }
 
-echo '</tbody>';
-echo '</table>';
 echo '</div>';
-
+echo '</div>';
 ?>
-
-
 
     <script>
         const sidebar = document.getElementById("sidebar");

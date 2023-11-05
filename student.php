@@ -40,6 +40,7 @@ session_start();
     </style>
 </head>
 <body >
+<img src="welcome_student.jpg" width = "100%">
 <?php
 include 'navigation_bar_s.php';
 ?>

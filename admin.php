@@ -36,6 +36,7 @@ session_start();
     </style>
 </head>
 <body >
+ <img src="welcome_admin.jpg" width = "100%">
 <?php
 include 'navigation_bar.php';
 ?>

@@ -18,7 +18,7 @@ if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
 }
 $message_right='';
 if (count($_POST) > 0) {
-    if ($_POST['professor'] != '') {
+    if (isset($_POST['professor']) && $_POST['professor'] != '') {
         
         $sql = "SELECT * FROM subjects ";
         $subjects = mysqli_query($link, $sql);
@@ -51,6 +51,18 @@ $sql = "SELECT * FROM subjects";
 $subjects = mysqli_query($link, $sql);
 
 $sql = "SELECT ps.id, u.name, u.surname, s.subject_name FROM login u, subjects s, professors_subjects ps WHERE u.user_type = 'Professor' AND u.id_login =ps.id_professor AND ps.id_subject =  s.id_subject";
+
+if (isset($_POST['srchProf']) && $_POST['srchProf'] != "") {
+
+    $sql = $sql . " AND u.name LIKE '" .  $_POST['srchProf'] . "%'";
+}
+if (isset($_POST['srchSubject']) && $_POST['srchSubject'] != "") {
+  
+    $sql = $sql . " AND s.subject_name LIKE '" .  $_POST['srchSubject'] . "%'";
+}
+
+
+
 $subject_assignments = mysqli_query($link, $sql);
 echo '<div style = "width : 100%; display: flex;">';
 echo '<div style = "width : 70%;">';
@@ -65,6 +77,15 @@ echo '<th></th>';
 echo '</tr>';
 echo '</thead>';
 echo '<tbody>';
+echo '<tr>';
+echo '<form method ="post">';
+
+echo '<td><input type="text" name="srchProf" class="txtField"> </td>';
+echo '<td><input type="text" name="srchSubject" class="txtField"> </td>';
+echo '<td><button type="submit" name="SearchBtn" id="SearchBtn" class="btn btn-primary">Search</button></td>';
+
+echo '</form>';
+echo '</tr>';
 if (mysqli_num_rows($subject_assignments) > 0) {
     // Loop through the result set
 while ($row = mysqli_fetch_assoc($subject_assignments)) {

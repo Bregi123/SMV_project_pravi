@@ -20,10 +20,48 @@ if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
 }
 
 //id_login != {$_SESSION['id_login']}
-$sql = "SELECT* FROM login";
+$emptyCriteria = true;
+$sql = "SELECT * FROM login";
+if (isset($_POST['srchName']) && $_POST['srchName'] != "") {
+    if ($emptyCriteria) {
+        $emptyCriteria = false;
+        $sql = $sql . " WHERE ";
+    } else {
+        $sql = $sql . " AND ";
+    }
+    $sql = $sql . "name LIKE '" .  $_POST['srchName'] . "%'";
+}
+if (isset($_POST['srchSurname']) && $_POST['srchSurname'] != "") {
+    if ($emptyCriteria) {
+        $emptyCriteria = false;
+        $sql = $sql . " WHERE ";
+    } else {
+        $sql = $sql . " AND ";
+    }
+    $sql = $sql . "surname LIKE '" .  $_POST['srchSurname'] . "%'";
+}
+if (isset($_POST['srchUsername']) && $_POST['srchUsername'] != "") {
+    if ($emptyCriteria) {
+        $emptyCriteria = false;
+        $sql = $sql . " WHERE ";
+    } else {
+        $sql = $sql . " AND ";
+    }
+    $sql = $sql . "username LIKE '" .  $_POST['srchUsername'] . "%'";
+}
+if (isset($_POST['srchUserType']) && $_POST['srchUserType'] != "") {
+    if ($emptyCriteria) {
+        $emptyCriteria = false;
+        $sql = $sql . " WHERE ";
+    } else {
+        $sql = $sql . " AND ";
+    }
+    $sql = $sql . "User_Type ='" .  $_POST['srchUserType'] . "'";
+}
+
 $result = mysqli_query($link, $sql);
 
-if (mysqli_num_rows($result) > 0) {
+
     // Loop through the result set
     echo '<table class="table table-striped">';
 echo '<thead>';
@@ -39,6 +77,26 @@ echo '<th></th>';
 echo '</tr>';
 echo '</thead>';
 echo '<tbody>';
+echo '<tr>';
+echo '<form method ="post">';
+echo '<td></td>';
+echo '<td><input type="text" name="srchName" class="txtField"> </td>';
+echo '<td><input type="text" name="srchSurname" class="txtField"> </td>';
+echo '<td><input type="text" name="srchUsername" class="txtField"> </td>';
+echo '<td> '; 
+echo '<select name="srchUserType" class="txtField">';
+echo '<option value="" ></option>';
+echo '<option value="Professor" >Professor</option>';
+echo '<option value="Student" >Student</option>';
+echo '<option value="Admin" >Admin</option>';
+echo '</select>';
+echo '</td>';
+echo '<td></td>';
+echo '<td><button type="submit" name="SearchBtn" id="SearchBtn" class="btn btn-primary">Search</button></td>';
+echo '<td></td>';
+echo '</form>';
+echo '</tr>';
+if (mysqli_num_rows($result) > 0) {
 while ($row = mysqli_fetch_assoc($result)) {
     echo '<tr>';
     echo '<td>' . $row["id_login"] . '</td>';
