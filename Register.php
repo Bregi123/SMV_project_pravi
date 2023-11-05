@@ -1,5 +1,36 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<?php
+
+<html>
+<head>
+    <title>Register</title>
+    <style>
+
+        .table_size{
+            width: 50%;
+        }
+
+        .center_content{
+            padding-left : 300px;
+            font-family: "Arial", Gadget, sans-serif;
+            font-weight : bold;
+            letter-spacing: -0.8px;
+            word-spacing: 2px;
+            color: #0000FF;
+           
+           
+            font-style: normal;
+           
+           
+
+        }
+        
+    </style>
+</head>
+
+<body >
+
+    <form name="frmUser" method="post" >
+    <?php
 session_start(); 
 // Start the session (this should be at the top of your PHP script)
 include 'database.php';
@@ -99,36 +130,6 @@ else {
 
  
 ?>
-<html>
-<head>
-    <title>Register</title>
-    <style>
-
-        .table_size{
-            width: 50%;
-        }
-
-        .center_content{
-            padding-left : 300px;
-            font-family: "Arial", Gadget, sans-serif;
-            font-weight : bold;
-            letter-spacing: -0.8px;
-            word-spacing: 2px;
-            color: #0000FF;
-           
-           
-            font-style: normal;
-           
-           
-
-        }
-        
-    </style>
-</head>
-
-<body >
-
-    <form name="frmUser" method="post" >
 <div class = "center_content"><?php if(isset($message)) { echo $message; } ?>
 
 <table class="table table_size"  >
