@@ -33,7 +33,7 @@ if (count($_POST) > 0) {
         $row = mysqli_fetch_array($result);
 
         if (empty($row)) {
-            mysqli_query($link, "INSERT INTO login ( firstname, surname , user_type, username, mypassword ,email, professor ) VALUES ('" . $_POST['name'] . "', '" . $_POST['surname'] . "', '" . $_POST['user_type'] . "', '" . $_POST['username'] . "', '12345', '" . $_POST['email'] . "')");
+            mysqli_query($link, "INSERT INTO login ( firstname, surname , user_type, username, mypassword ,email) VALUES ('" . $_POST['name'] . "', '" . $_POST['surname'] . "', '" . $_POST['user_type'] . "', '" . $_POST['username'] . "', '12345', '" . $_POST['email'] . "')");
             header("Location: User_management.php");
             exit;
         }
