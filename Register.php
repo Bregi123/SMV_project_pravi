@@ -19,7 +19,7 @@ if (count($_POST) > 0) {
             if ( $_POST['password'] ==  $_POST['password2'] )
             {
                 mysqli_query($link, "UPDATE login SET name='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', username='" . $_POST['username'] . "', password = '" . $_POST['password'] . "' WHERE id_login='" . $_POST['id_login'] . "'");
-                header("Location: User_management.php");
+                header("Location: student.php");
                 exit;
             }
             else
