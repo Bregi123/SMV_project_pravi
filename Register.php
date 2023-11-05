@@ -124,7 +124,7 @@ else {
 
 <body >
 
-    <form name="frmUser" method="post" action="">
+    <form name="frmUser" method="post" >
 <div class = "center_content"><?php if(isset($message)) { echo $message; } ?>
 
 <table class="table table_size"  >
