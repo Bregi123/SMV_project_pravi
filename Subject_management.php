@@ -18,6 +18,9 @@ if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
     }
     
 }
+if (isset($_GET['message'])){
+    echo $_GET['message'];
+}
 
 //id_login != {$_SESSION['id_login']}
 $sql = "SELECT * FROM Subjects";

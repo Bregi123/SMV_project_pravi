@@ -18,10 +18,31 @@ include 'database.php';
         }
         
     }
-
+   
+    if (count($_POST) > 0) {
+       
+            
+            $sql = "SELECT * FROM subjects ";
+            $subjects = mysqli_query($link, $sql);
+            while ($row = mysqli_fetch_assoc($subjects)) {
+                $idSubject=$row["id_subject"];
+                if (isset($_POST["subject".$idSubject])) {
+                    $result = mysqli_query($link, "SELECT * FROM students WHERE id_student=".$_SESSION['user_id']." and id_subject=".$idSubject);
+                    $row = mysqli_fetch_array($result);
+                    if (empty($row)) {
+                        
+                        mysqli_query($link, "INSERT INTO students ( id_student, id_subject ) VALUES (" . $_SESSION['user_id'] . ", " . $idSubject . ")");
+                    }
+                }
+            }
+        } 
+        
+     
+        
+    
 //conncet the professor-subjects table
 // Get a list of subjects for the logged-in professor
-$sql = "SELECT s.id_subject, s.subject_name FROM subjects s JOIN students st ON s.id_subject = st.id_subject WHERE st.id_student = " . $_SESSION["user_id"];
+$sql = "SELECT st.id ,s.id_subject, s.subject_name FROM subjects s JOIN students st ON s.id_subject = st.id_subject WHERE st.id_student = " . $_SESSION["user_id"];
 $subjects = mysqli_query($link, $sql);
 
 $sql = "SELECT subject_name FROM subjects";
@@ -56,11 +77,20 @@ echo '<div style = "width : 30%; padding:15px;">';
 echo '<table class="table table-striped">';
 echo '<tbody>';
 
+echo 'My subjects ';
 while ($row = mysqli_fetch_assoc($subjects )) {
+    
     echo '<tr>';
-    echo 'My subjects ';
+   
     echo '<td>' . $row["subject_name"] . '</td>';
+    echo '<form method="POST" action="delete_student.php">';
+    
+    echo '<td><input name="deleteID" value="'. $row["id"] .'" hidden></input><button type="submit" name="delete-button" id="deleteBtn-' . $row["id"] . '" class="btn btn-danger">Delete</button></td>';
+
+
+    echo '</form>';
     echo '</tr>';
+    
 }
 
 echo '</tbody>';
@@ -72,11 +102,7 @@ $subjects = mysqli_query($link, $sql);
 
 echo '<div style = "width : 30%; padding:15px;">';
 echo '<form method="POST">';
-echo 'Select student:&nbsp;';
-echo '<select name="student" id="student" class="txtField">';
-echo '<option value="" selected="true"> </option>';
 
-echo '</select>';
 echo '<p> </p>';
 echo '<table class="table table-striped">';
 echo '<tbody>';

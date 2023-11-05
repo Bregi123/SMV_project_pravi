@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         $row = mysqli_fetch_array($res);
         if (!empty($row)){            
             $message = "Cannot delete subject! Materials for subject are assigned ";
-            header("Location: Subject_management.php?message=" . $message);
+            header("Location: Students_subjects.php?message=" . $message);
             exit();
    
         }
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         if (!empty($row)){          
             
             $message = "Cannot delete subject! Professors for  subject are already assigned ";
-            header("Location: Subject_management.php?message=" . $message);
+            header("Location: Students_subjects.php?message=" . $message);
             exit();
           
         }
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         if (!empty($row)){          
             
             $message = "Cannot delete subject! Students for  subject are already assigned ";
-            header("Location: Subject_management.php?message=" . $message);
+            header("Location: Students_subjects.php?message=" . $message);
             exit();
           
         }
@@ -40,18 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         if (!empty($row)){          
             
             $message = "Cannot delete subject! Assignments for subject are already  ";
-            header("Location: Subject_management.php?message=" . $message);
+            header("Location: Students_subjects.php?message=" . $message);
             exit();
          
         }
-     
-            $query = "DELETE FROM subjects WHERE id_subject={$deleteID} LIMIT 1";
+            $query = "DELETE FROM students WHERE id=$deleteID LIMIT 1";
             mysqli_query($link, $query);
         
     }
 }
 
-    header("Location: Subject_management.php?message=" . $message);
-    exit();
+header("Location: Students_subjects.php?message=" . $message);
+exit();
 
     ?>
