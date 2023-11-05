@@ -67,21 +67,30 @@ echo '</tbody>';
 echo '</table>';
 echo '</div>';
 
+$sql = "SELECT * FROM subjects ";
+$subjects = mysqli_query($link, $sql);
 
 echo '<div style = "width : 30%; padding:15px;">';
+echo '<form method="POST">';
+echo 'Select student:&nbsp;';
+echo '<select name="student" id="student" class="txtField">';
+echo '<option value="" selected="true"> </option>';
+
+echo '</select>';
+echo '<p> </p>';
 echo '<table class="table table-striped">';
 echo '<tbody>';
-echo 'Subjects';
-
-while ($row = mysqli_fetch_assoc($all_subjects )) {
+while ($row = mysqli_fetch_assoc($subjects)) {
     echo '<tr>';
-
-    echo '<td>' . $row["subject_name"] . '</td>';
+    echo '<td> <input type="checkbox" id="subject' . $row["id_subject"] . '" name="subject' . $row["id_subject"] . '" value="' . $row["id_subject"] . '">&nbsp<label for="' . $row["id_subject"] . '"> ' . $row["subject_name"] . '</label><br></td>';
     echo '</tr>';
-}
 
+}
 echo '</tbody>';
 echo '</table>';
+echo '<td><button type="submit" name="add-button"  class="btn btn-primary">Add</button></td>';
+echo '</form>';
+echo '</div>';
 echo '</div>';
 
 ?>
