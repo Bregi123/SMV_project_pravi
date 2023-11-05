@@ -40,7 +40,7 @@ echo '<div class = "h2" >REGISTER </div>';
 
 
 
-
+echo 'start';
 
 $message = "juhu1";
 if (count($_POST) > 0) {
@@ -128,7 +128,7 @@ else {
     $email = '';
 }
 
- 
+echo 'stop';
 ?>
 <div class = "center_content"><?php if(isset($message)) { echo $message; } ?>
 
