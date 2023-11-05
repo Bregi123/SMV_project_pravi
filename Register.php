@@ -172,7 +172,7 @@ else {
 
 <input  type="submit" name="submit" value="Submit" class="btn btn-primary" > 
 
-<button type="reset" onclick="location.href = 'Login.php'"  class="btn btn-danger" >Cancel</button>
+<button type="reset" onclick="location.href = 'login.php'"  class="btn btn-danger" >Cancel</button>
    
 </div>
 </form>

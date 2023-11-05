@@ -12,7 +12,7 @@
         <div class="dropdown">
             <button class="dropbtn">Menu</button>
             <div class="dropdown-content">
-                <a href="Login.php">Login</a>
+                <a href="login.php">Login</a>
                 <a href="Home_page.php">Home</a>
 
             </div>

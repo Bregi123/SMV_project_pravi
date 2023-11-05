@@ -13,7 +13,7 @@ include 'database.php';
 if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
     if($_SESSION['user_type'] != 'Admin')
     {
-        header("location: Login.php");
+        header("location: login.php");
     exit();
     }
     
