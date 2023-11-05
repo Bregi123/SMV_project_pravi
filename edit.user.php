@@ -23,7 +23,7 @@ if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
 if (count($_POST) > 0) {
     if ($_POST['id_login'] != ''){
 
-        mysqli_query($link, "UPDATE login SET name='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', user_type='" . $_POST['user_type'] . "', username='" . $_POST['username'] . "' WHERE id_login='" . $_POST['id_login'] . "'");
+        mysqli_query($link, "UPDATE login SET firstname='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', user_type='" . $_POST['user_type'] . "', username='" . $_POST['username'] . "' WHERE id_login='" . $_POST['id_login'] . "'");
         header("Location: User_management.php");
         exit;
     } 
@@ -33,7 +33,7 @@ if (count($_POST) > 0) {
         $row = mysqli_fetch_array($result);
 
         if (empty($row)) {
-            mysqli_query($link, "INSERT INTO login ( name, surname , user_type, username, password ,email ) VALUES ('" . $_POST['name'] . "', '" . $_POST['surname'] . "', '" . $_POST['user_type'] . "', '" . $_POST['username'] . "', '12345', '" . $_POST['email'] . "')");
+            mysqli_query($link, "INSERT INTO login ( firstname, surname , user_type, username, mypassword ,email ) VALUES ('" . $_POST['name'] . "', '" . $_POST['surname'] . "', '" . $_POST['user_type'] . "', '" . $_POST['username'] . "', '12345', '" . $_POST['email'] . "')");
             header("Location: User_management.php");
             exit;
         }
@@ -52,7 +52,7 @@ if (isset($_GET['user_id'])) {
     if (!empty($row)) {
         $id_login = $row['id_login'];
         $username = $row['username'];
-        $name = $row['name'];
+        $name = $row['firstname'];
         $surname = $row['surname'];
         $user_type = $row['user_type'];
         $email = $row['email'];

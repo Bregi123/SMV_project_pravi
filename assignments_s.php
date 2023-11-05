@@ -36,10 +36,10 @@ if (isset($_POST['idsubject'])) {
             $user = mysqli_query($link, "SELECT * FROM login WHERE id_login=" . $_SESSION['user_id']);
             $userrow = mysqli_fetch_array($user);
 
-            $targetFile = $uploadsDirectory . basename( $userrow['surname'] . " " .  $userrow['name'] .  " - " . $_POST['assignment_name'] . $file_type );
+            $targetFile = $uploadsDirectory . basename( $userrow['surname'] . " " .  $userrow['firstname'] .  " - " . $_POST['assignment_name'] . $file_type );
 
             if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {
-                $result = mysqli_query($link, "SELECT * FROM assignments WHERE id_subject=" . $_POST['idsubject'] . " AND id_student = " . $_SESSION['user_id'] . " AND assignment_file = '" . $userrow['surname'] . " " .  $userrow['name'] .  " - " . $_POST['assignment_name'] . $file_type . "' ");
+                $result = mysqli_query($link, "SELECT * FROM assignments WHERE id_subject=" . $_POST['idsubject'] . " AND id_student = " . $_SESSION['user_id'] . " AND assignment_file = '" . $userrow['surname'] . " " .  $userrow['firstname'] .  " - " . $_POST['assignment_name'] . $file_type . "' ");
                 $row = mysqli_fetch_array($result);
 
                 
@@ -48,7 +48,7 @@ if (isset($_POST['idsubject'])) {
             
                 if (empty($row)) {
 
-                    mysqli_query($link, "INSERT INTO assignments ( id_subject,id_student, assignment_name, assignment_file) VALUES (" . $_POST['idsubject'] . ", " . $_SESSION['user_id'] . ", '" . $_POST['assignment_name'] . "', '" . $userrow['surname'] . " " .  $userrow['name'] .  " - " . $_POST['assignment_name'] . $file_type . "')");
+                    mysqli_query($link, "INSERT INTO assignments ( id_subject,id_student, assignment_name, assignment_file) VALUES (" . $_POST['idsubject'] . ", " . $_SESSION['user_id'] . ", '" . $_POST['assignment_name'] . "', '" . $userrow['surname'] . " " .  $userrow['firstname'] .  " - " . $_POST['assignment_name'] . $file_type . "')");
                     header("Location: assignments_s.php?idsubject=". $_POST['idsubject']);
                   
                     exit;

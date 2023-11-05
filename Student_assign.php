@@ -48,11 +48,11 @@ $students = mysqli_query($link, $sql);
 $sql = "SELECT * FROM subjects ";
 $subjects = mysqli_query($link, $sql);
 
-$sql = "SELECT st.id, u.name, u.surname, s.subject_name FROM login u, subjects s, students st WHERE u.user_type = 'Student' AND u.id_login =st.id_student AND st.id_subject =  s.id_subject";
+$sql = "SELECT st.id, u.firstname, u.surname, s.subject_name FROM login u, subjects s, students st WHERE u.user_type = 'Student' AND u.id_login =st.id_student AND st.id_subject =  s.id_subject";
 
 if (isset($_POST['srchStudent']) && $_POST['srchStudent'] != "") {
 
-    $sql = $sql . " AND u.name LIKE '" .  $_POST['srchStudent'] . "%'";
+    $sql = $sql . " AND u.firstname LIKE '" .  $_POST['srchStudent'] . "%'";
 }
 if (isset($_POST['srchSubject']) && $_POST['srchSubject'] != "") {
   
@@ -86,7 +86,7 @@ if (mysqli_num_rows($subject_assignments) > 0) {
     // Loop through the result set
 while ($row = mysqli_fetch_assoc($subject_assignments)) {
     echo '<tr>';
-    echo '<td>' . $row["name"] . '&nbsp;' . $row["surname"] . '</td>';
+    echo '<td>' . $row["firstname"] . '&nbsp;' . $row["surname"] . '</td>';
     echo '<td>' . $row["subject_name"] . '</td>';
 
 
@@ -113,7 +113,7 @@ echo 'Select student:&nbsp;';
 echo '<select name="student" id="student" class="txtField">';
 echo '<option value="" selected="true"> </option>';
 while ($row = mysqli_fetch_assoc($students)){
-echo '<option value="'. $row["id_login"] .'" >'. $row["name"] .'&nbsp; '. $row["surname"] .'</option>';
+echo '<option value="'. $row["id_login"] .'" >'. $row["firstname"] .'&nbsp; '. $row["surname"] .'</option>';
 }
 echo '</select>';
 echo '<p> </p>';

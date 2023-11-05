@@ -1,35 +1,4 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-<html>
-<head>
-    <title>Register</title>
-    <style>
-
-        .table_size{
-            width: 50%;
-        }
-
-        .center_content{
-            padding-left : 300px;
-            font-family: "Arial", Gadget, sans-serif;
-            font-weight : bold;
-            letter-spacing: -0.8px;
-            word-spacing: 2px;
-            color: #0000FF;
-           
-           
-            font-style: normal;
-           
-           
-
-        }
-        
-    </style>
-</head>
-
-<body >
-
-    <form name="frmUser" method="post" >
     <?php
 session_start(); 
 // Start the session (this should be at the top of your PHP script)
@@ -51,7 +20,7 @@ if (count($_POST) > 0) {
         {
             if ( $_POST['password'] ==  $_POST['password2'] )
             {
-                mysqli_query($link, "UPDATE login SET name='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', username='" . $_POST['username'] . "', password = '" . $_POST['password'] . "' WHERE id_login='" . $_POST['id_login'] . "'");
+                mysqli_query($link, "UPDATE login SET firstname='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', username='" . $_POST['username'] . "', mypassword = '" . $_POST['password'] . "' WHERE id_login='" . $_POST['id_login'] . "'");
                 header("Location: student.php");
                 exit;
             }
@@ -62,7 +31,7 @@ if (count($_POST) > 0) {
         }
         else
         {
-            mysqli_query($link, "UPDATE login SET name='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', username='" . $_POST['username'] . "' WHERE id_login='" . $_POST['id_login'] . "'");
+            mysqli_query($link, "UPDATE login SET firstname='" . $_POST['name'] . "', surname='" . $_POST['surname'] . "', username='" . $_POST['username'] . "' WHERE id_login='" . $_POST['id_login'] . "'");
                 header("Location: student.php");
                 exit;
         }
@@ -84,7 +53,7 @@ if (count($_POST) > 0) {
                 if ( $_POST['password'] ==  $_POST['password2'] )
                 {
                     echo "juhu9";
-                    $sql =  "INSERT INTO login ( name, surname , user_type, username, password ,email ) VALUES ('" . $_POST['name'] . "', '" . $_POST['surname'] . "', 'Student', '" . $_POST['username'] . "', '" . $_POST['password'] . "', '" . $_POST['email'] . "')";
+                    $sql =  "INSERT INTO login ( firstname, surname , user_type, username, mypassword ,email ) VALUES ('" . $_POST['name'] . "', '" . $_POST['surname'] . "', 'Student', '" . $_POST['username'] . "', '" . $_POST['password'] . "', '" . $_POST['email'] . "')";
                     echo $sql;
                     mysqli_query($link,$sql);
                     echo "juhu10";
@@ -118,7 +87,7 @@ if (isset($_SESSION["user_id"] )) {
     if (!empty($row)) {
         $id_login = $row['id_login'];
         $username = $row['username'];
-        $name = $row['name'];
+        $name = $row['firstname'];
         $surname = $row['surname'];
         $user_type = $row['user_type'];
         $email = $row['email'];
@@ -139,6 +108,37 @@ else {
 
 echo 'stop';
 ?>
+
+<html>
+<head>
+    <title>Register</title>
+    <style>
+
+        .table_size{
+            width: 50%;
+        }
+
+        .center_content{
+            padding-left : 300px;
+            font-family: "Arial", Gadget, sans-serif;
+            font-weight : bold;
+            letter-spacing: -0.8px;
+            word-spacing: 2px;
+            color: #0000FF;
+           
+           
+            font-style: normal;
+           
+           
+
+        }
+        
+    </style>
+</head>
+
+<body >
+
+    <form name="frmUser" method="post" >
 <div class = "center_content"><?php if(isset($message)) { echo $message; } ?>
 
 <table class="table table_size"  >

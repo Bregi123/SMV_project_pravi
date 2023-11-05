@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = mysqli_real_escape_string($link, $email);
         $password = mysqli_real_escape_string($link, $password);
 
-        $sql = "SELECT * FROM login WHERE email = '$email' AND password = '$password'";
+        $sql = "SELECT * FROM login WHERE email = '$email' AND mypassword = '$password'";
         $result = mysqli_query($link, $sql);
         $_SESSION['logged_in'] = true;
         

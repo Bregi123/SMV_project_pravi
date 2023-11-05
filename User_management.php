@@ -29,7 +29,7 @@ if (isset($_POST['srchName']) && $_POST['srchName'] != "") {
     } else {
         $sql = $sql . " AND ";
     }
-    $sql = $sql . "name LIKE '" .  $_POST['srchName'] . "%'";
+    $sql = $sql . "firstname LIKE '" .  $_POST['srchName'] . "%'";
 }
 if (isset($_POST['srchSurname']) && $_POST['srchSurname'] != "") {
     if ($emptyCriteria) {
@@ -100,7 +100,7 @@ if (mysqli_num_rows($result) > 0) {
 while ($row = mysqli_fetch_assoc($result)) {
     echo '<tr>';
     echo '<td>' . $row["id_login"] . '</td>';
-    echo '<td>' . $row["name"] . '</td>';
+    echo '<td>' . $row["firstname"] . '</td>';
     echo '<td>' . $row["surname"] . '</td>';
     echo '<td>' . $row["username"] . '</td>';
     echo '<td>' . $row["user_type"] . '</td>';

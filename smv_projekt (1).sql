@@ -34,11 +34,11 @@ DROP TABLE  `login`;
 
 CREATE TABLE `login` (
   `id_login` int NOT NULL,
-  `name` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `firstname` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `surname` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `user_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `mypassword` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `professor` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -47,7 +47,7 @@ CREATE TABLE `login` (
 -- Odloži podatke za tabelo `login`
 --
 
-INSERT INTO `login` (`id_login`, `name`, `surname`, `username`, `user_type`, `password`, `email`, `professor`) VALUES
+INSERT INTO `login` (`id_login`, `firstname`, `surname`, `username`, `user_type`, `mypassword`, `email`, `professor`) VALUES
 (1, 'luka', 'Bombek', 'kljukec', 'Admin', '12345678', 'luka@gmail.com', 0),
 (2, 'Matevz', 'Berginc', 'Professor', 'Professor', 't', 't@gmail.com', 1),
 (3, 'John', 'Smith', 'johnsmith1', 'Student', 'password1', 'john@example.com', 0),
