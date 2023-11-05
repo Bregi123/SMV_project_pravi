@@ -11,9 +11,11 @@ echo '<div class = "h2" >REGISTER </div>';
 
 
 
-
+$message = "juhu1";
 if (count($_POST) > 0) {
+    $message = "juhu2";
     if ($_POST['id_login'] != ''){
+        $message = "juhu3";
         if ( $_POST['password']!="")
         {
             if ( $_POST['password'] ==  $_POST['password2'] )
@@ -36,6 +38,7 @@ if (count($_POST) > 0) {
     } 
     
     else {
+        $message = "juhu4";
         $result = mysqli_query($link, "SELECT * FROM login WHERE email='" . $_POST['email'] . "'");
         $row = mysqli_fetch_array($result);
 
