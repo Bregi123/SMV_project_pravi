@@ -37,8 +37,9 @@ if (isset($_POST['idsubject'])) {
             $userrow = mysqli_fetch_array($user);
 
             $targetFile = $uploadsDirectory . basename( $userrow['surname'] . " " .  $userrow['firstname'] .  " - " . $_POST['assignment_name'] . $file_type );
-
-            if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {
+            echo $targetFile;
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {;
+                
                 $result = mysqli_query($link, "SELECT * FROM assignments WHERE id_subject=" . $_POST['idsubject'] . " AND id_student = " . $_SESSION['user_id'] . " AND assignment_file = '" . $userrow['surname'] . " " .  $userrow['firstname'] .  " - " . $_POST['assignment_name'] . $file_type . "' ");
                 $row = mysqli_fetch_array($result);
 
