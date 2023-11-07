@@ -23,7 +23,7 @@ if (isset($_GET['message'])){
 }
 
 //id_login != {$_SESSION['id_login']}
-$sql = "SELECT * FROM Subjects";
+$sql = "SELECT * FROM subjects";
 $result = mysqli_query($link, $sql);
 
 if (mysqli_num_rows($result) > 0) {
