@@ -135,6 +135,7 @@ echo '</table>';
   padding-top: 65px;
   padding-left: 20px;
   padding-right: 40px;
+  background: linear-gradient(to left, whitesmoke 0%, grey 100%);
   
 }
     </style>
