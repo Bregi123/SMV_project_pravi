@@ -2,7 +2,7 @@
 
 <?php
 include 'header.php';
-echo '<div class = "h2" >SUBJECT MANAGEMENT </div>';
+echo '<div class = "h2" >Subject Management </div>';
 // Start the session (this should be at the top of your PHP script)
 echo '<div style = " text-align: right;">';
 echo '<button type="button" class="btn btn-primary" onclick="location.href = \'edit.subject.php\'">Add</button>';

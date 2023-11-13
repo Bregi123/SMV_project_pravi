@@ -5,7 +5,7 @@ session_start();
 // Start the session (this should be at the top of your PHP script)
 include 'database.php';
 include 'header.php';
-echo '<div class = "h2" >USER EDIT </div>';
+echo '<div class = "h2" >Edit User </div>';
 //session_start();
 
 if (isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
@@ -72,6 +72,7 @@ else {
     $email = '';
 }
 
+
  
 ?>
 <html>
@@ -83,8 +84,24 @@ else {
   padding-top: 65px;
   padding-left: 20px;
   padding-right: 40px;
-  
 }
+.text_field{
+    width: 20vw;
+    color: black;
+    border: 1px solid transparent;
+    border-bottom: 1px solid grey;
+    background-color: transparent;
+    outline: none;
+}
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+
     </style>
 
 </head>
@@ -96,27 +113,27 @@ include 'navigation_bar.php';
     <form name="frmUser" method="post" action="">
 <div class = "center_content"><?php if(isset($message)) { echo $message; } ?>
 
-<table class="table table_size"  >
+<table class="table table_size">
   <tbody>
     <tr>
       <td>Username:</td>
-      <td><input type="hidden" name="id_login" class="txtField" value="<?php echo $id_login; ?>">
-            <input type="text" name="username"  value="<?php echo $username; ?>">
+      <td><input class="text_field" type="hidden" name="id_login"  value="<?php echo $id_login; ?>">
+            <input class="text_field" type="text" name="username"  value="<?php echo $username; ?>">
         </td>
     </tr>
     <tr>
       <td>First Name:</td>
-      <td><input type="text" name="name" class="txtField" value="<?php echo $name; ?>">
+      <td><input class="text_field" type="text" name="name"  value="<?php echo $name; ?>">
         </td>
     </tr>
     <tr>  
       <td>Last Name :</td>
-      <td><input type="text" name="surname" class="txtField" value="<?php echo $surname; ?>"></td>
+      <td><input class="text_field" type="text" name="surname"  value="<?php echo $surname; ?>"></td>
     </tr>
     <tr>    
       <td>User Type:</td>
       <td>
-        <select name="user_type" class="txtField">
+        <select name="user_type" class="dropdown">
             <option value="Professor" <?php if ($user_type == "Professor") {echo 'selected=true';} ?>>Professor</option>
             <option value="Student" <?php if ($user_type == "Student") {echo 'selected=true';} ?>>Student</option>
             <option value="Admin" <?php if ($user_type == "Admin") {echo 'selected=true';} ?>>Admin</option>
@@ -125,7 +142,7 @@ include 'navigation_bar.php';
     </tr>
     <tr>
       <td>Email:</td>
-      <td><input type="text" name="email" class="txtField" <?php if (isset($_GET['user_id'])) {echo "disabled";} ?> value="<?php echo $email; ?>"></td>
+      <td><input class="text_field" type="text" name="email" <?php if (isset($_GET['user_id'])) {echo "disabled";} ?> value="<?php echo $email; ?>"></td>
     </tr>
 
   </tbody>

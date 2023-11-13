@@ -2,28 +2,10 @@
 <head>
 <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 <style>
-    .h1{
-        font-family: Arial, Helvetica, sans-serif;
-font-size: 1.5vw;
-padding: 0.8vw;
-letter-spacing: -1px;
-word-spacing: 0px;
-color: grey;
-border: 1px solid grey;
-width: 30%;
-border-radius: 10px;
-justify-content: center;
-margin: auto;
-font-weight: 700;
-text-decoration: none;
-font-style: normal;
-font-variant: normal;
-text-transform: none;
-text-align: center;
-    }
+   
     .h2{
         font-family: Arial, Helvetica, sans-serif;
-font-size: 1vw;
+font-size: 1.5vw;
 letter-spacing: -1px;
 word-spacing: 0px;
 color: #000000;
@@ -33,6 +15,7 @@ font-style: normal;
 font-variant: normal;
 text-transform: none;
 text-align: center;
+margin-top: 1vw;
     }
               
 

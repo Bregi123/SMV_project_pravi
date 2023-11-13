@@ -36,18 +36,23 @@ session_start();
   backdrop-filter: blur(8px);
 }
 #tekst {
-    font-size: 30px;
+    font-size: 2.5vw;
     overflow: hidden;
     display: inline-block;
     white-space: nowrap;
-    width: 400px;
+    width: 30vw;
     letter-spacing: 5px;
     color: white;
     border-right: 5px solid;
-  
     animation: 
      typing 2s steps(15),
      cursor .6s step-end infinite alternate;
+}
+.divneki{
+    margin: auto;
+    text-align:center;
+    justify-content: center;
+    margin-top: 14vw;
 }
 
 @keyframes cursor {     /* TUKI JE ZATO DA SE ONA CRTICA NA KONCU BLNKA (zdelo se mi je kul) */
@@ -64,7 +69,7 @@ session_start();
     </style>
 </head>
 <body>
- <div id=tekst> Welcome to Pibernet! </div>
+ <div class="divneki"><div id=tekst> Welcome to Pibernet! </div></div>
 <?php
 include 'navigation_bar.php';
 ?>

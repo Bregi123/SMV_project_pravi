@@ -5,9 +5,9 @@
 
 
 include 'header.php';
-echo '<div class = "h1" >PIBERNET E-CLASSROOM </div>';
+
  echo'<div class = "h2" >Student Subject Assign</div>';
-// Start the session (this should be at the top of your PHP script)
+
 
 include 'database.php';
 //session_start();
@@ -146,6 +146,11 @@ echo '</div>';
 </style>
 
 <body >
+    <style>
+        body{
+            background: linear-gradient(to left, whitesmoke 0%, grey 100%);
+        }
+    </style>
 <?php
 include 'navigation_bar.php';
 ?>
