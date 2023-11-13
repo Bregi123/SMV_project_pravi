@@ -84,13 +84,15 @@ else {
             letter-spacing: -0.8px;
             word-spacing: 2px;
             color: #0000FF;
-           
-           
             font-style: normal;
-           
-           
-
         }
+        body {
+  background: linear-gradient(to bottom, whitesmoke 0%, grey 100%);
+  padding-top: 65px;
+  padding-left: 20px;
+  padding-right: 40px;
+  
+}
         
     </style>
 </head>

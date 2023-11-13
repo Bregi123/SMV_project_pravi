@@ -65,6 +65,18 @@ echo '</table>';
 <html>
 
     <title>Subject Management</title>
+    <style>
+    body {
+  background: linear-gradient(to bottom, whitesmoke 0%, grey 100%);
+  padding-top: 65px;
+  padding-left: 20px;
+  padding-right: 40px;
+  
+}
+<?php 
+echo '<div class = "h1" >PIBERNET E-CLASSROOM </div>';
+?>
+    </style>
 
 
 <body >

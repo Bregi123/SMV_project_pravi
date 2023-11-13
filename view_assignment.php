@@ -28,7 +28,11 @@ include 'database.php';
     <title> Professor</title>
     <style>
               body {
-  background-color:#d3d3d3;
+  background: linear-gradient(to bottom, whitesmoke 0%, grey 100%);
+  padding-top: 65px;
+  padding-left: 20px;
+  padding-right: 40px;
+  
 }
         #logoutButton {
             background-color: #007BFF; /* Change the background color as desired */

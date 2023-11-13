@@ -1,8 +1,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrp.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <?php
+
+
+
 include 'header.php';
-echo '<div class = "h2" >Student Subject Assign</div>';
+echo '<div class = "h1" >PIBERNET E-CLASSROOM </div>';
+ echo'<div class = "h2" >Student Subject Assign</div>';
 // Start the session (this should be at the top of your PHP script)
 
 include 'database.php';
@@ -137,7 +141,9 @@ echo '</div>';
 <html>
 
     <title>Student Subject Assignments</title>
-
+<style>
+    
+</style>
 
 <body >
 <?php

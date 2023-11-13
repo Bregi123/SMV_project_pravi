@@ -20,9 +20,6 @@ session_start();
 <head>
     <title>Admin</title>
     <style>
-              body {
-  background-color:#d3d3d3;
-}
         #logoutButton {
             background-color: #007BFF; /* Change the background color as desired */
             color: #fff; /* Change the text color as desired */
@@ -31,12 +28,43 @@ session_start();
             padding: 10px 20px; /* Adjust padding as needed */
             cursor: pointer;
         }
+        body {
+  padding-top: 65px;
+  padding-left: 20px;
+  padding-right: 40px;
+  background-image: url('science_pattern.jpg');
+  backdrop-filter: blur(8px);
+}
+#tekst {
+    font-size: 30px;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    width: 400px;
+    letter-spacing: 5px;
+    color: white;
+    border-right: 5px solid;
+  
+    animation: 
+     typing 2s steps(15),
+     cursor .6s step-end infinite alternate;
+}
+
+@keyframes cursor {     /* TUKI JE ZATO DA SE ONA CRTICA NA KONCU BLNKA (zdelo se mi je kul) */
+    
+    50% { border-color: transparent; }
+    
+}
+
+@keyframes typing {
+    from { width: 0; }
+}
 
        
     </style>
 </head>
-<body >
- <img src="welcome_admin.jpg" width = "100%">
+<body>
+ <div id=tekst> Welcome to Pibernet! </div>
 <?php
 include 'navigation_bar.php';
 ?>

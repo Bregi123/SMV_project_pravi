@@ -129,6 +129,15 @@ echo '</table>';
 <html>
 
     <title>User Management</title>
+    <style>
+    body {
+  background: linear-gradient(to bottom, whitesmoke 0%, grey 100%);
+  padding-top: 65px;
+  padding-left: 20px;
+  padding-right: 40px;
+  
+}
+    </style>
 
 
 <body >

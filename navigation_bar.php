@@ -6,11 +6,11 @@
     
     <li></li>
     <li></li>
-    <li><button  onclick="location.href = 'admin.php'" ; id="Button">Home</button></li>
-    <li><button  onclick="location.href = 'User_management.php'" ; id="Button">Manage Users</button></li>
-    <li><button  onclick="location.href = 'Subject_management.php'" ; id="Button">Manage Subjects</button></li>
-    <li><button  onclick="location.href = 'Professor_assign.php'" ; id="Button">Professor Subject Assignment</button></li>
-    <li><button  onclick="location.href = 'Student_assign.php'" ; id="Button">Student Subject Assignment</button></li>
+    <li><button class="knof"  onclick="location.href = 'admin.php'" ; id="Button">Home</button></li>
+    <li><button class="knof"  onclick="location.href = 'User_management.php'" ; id="Button">Manage Users</button></li>
+    <li><button class="knof"  onclick="location.href = 'Subject_management.php'" ; id="Button">Manage Subjects</button></li>
+    <li><button class="knof"  onclick="location.href = 'Professor_assign.php'" ; id="Button">Professor Subject Assignment</button></li>
+    <li><button class="knof"  onclick="location.href = 'Student_assign.php'" ; id="Button">Student Subject Assignment</button></li>
     
     
 </ul>
@@ -20,8 +20,9 @@
 </div>
 
 <div class="sidebar-image">
-<a style= "position: fixed; bottom: 40px; left: 10px; width: 50px; height: 50px;">ADMIN</a>
+<a style= "position: fixed; bottom: 40px; left: 10px; width: 50px; height: 50px; color: white;">ADMIN</a>
 <img src="pfp.jpg" alt="Image Description" style="position: fixed; bottom: 20px; left: 10px; width: 50px; height: 50px;">
+
 </div>
 
 

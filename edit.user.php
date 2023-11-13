@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/krneki.css">
 <?php
 session_start(); 
 // Start the session (this should be at the top of your PHP script)
@@ -77,27 +78,15 @@ else {
 <head>
     <title>Edit User </title>
     <style>
-
-        .table_size{
-            width: 50%;
-        }
-
-        .center_content{
-            padding-left : 300px;
-            font-family: "Arial", Gadget, sans-serif;
-            font-weight : bold;
-            letter-spacing: -0.8px;
-            word-spacing: 2px;
-            color: #0000FF;
-           
-           
-            font-style: normal;
-           
-           
-
-        }
-        
+        body {
+  background: linear-gradient(to bottom, whitesmoke 0%, grey 100%);
+  padding-top: 65px;
+  padding-left: 20px;
+  padding-right: 40px;
+  
+}
     </style>
+
 </head>
 
 <body >
