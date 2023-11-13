@@ -4,7 +4,7 @@ session_start();
 // Start the session (this should be at the top of your PHP script)
 include 'database.php';
 include 'header.php';
-echo '<div class = "h2" >REGISTER </div>';
+echo '<div class = "h2" >Register </div>';
 //session_start();
 
 
@@ -129,7 +129,7 @@ else {
            
             font-style: normal;
            
-           
+        
 
         }
         body {
@@ -139,6 +139,15 @@ else {
   padding-right: 40px;
   
 }
+        .text_field{
+    width: 20vw;
+    color: black;
+    border: 1px solid transparent;
+    border-bottom: 1px solid grey;
+    background-color: transparent;
+    outline: none;
+}
+        
     </style>
 </head>
 
@@ -151,30 +160,30 @@ else {
   <tbody>
   <tr>
       <td>Username:</td>
-      <td><input type="hidden" name="id_login" class="txtField" value="<?php echo $id_login; ?>">
-            <input type="text" name="username"  value="<?php echo $username; ?>">
+      <td><input class="text_field"  type="hidden" name="id_login" value="<?php echo $id_login; ?>">
+            <input class="text_field" type="text" name="username"  value="<?php echo $username; ?>">
         </td>
     </tr>
     <tr>
       <td>First Name:</td>
-      <td><input type="text" name="name" class="txtField" value="<?php echo $name; ?>">
+      <td><input type="text" name="name" class="text_field" value="<?php echo $name; ?>">
         </td>
     </tr>
     <tr>  
       <td>Last Name :</td>
-      <td><input type="text" name="surname" class="txtField" value="<?php echo $surname; ?>"></td>
+      <td><input type="text" name="surname" class="text_field" value="<?php echo $surname; ?>"></td>
     </tr>
     <tr>
       <td>Email:</td>
-      <td><input type="text" name="email" class="txtField" <?php if (isset($_GET['user_id'])) {echo "disabled";} ?> value="<?php echo $email; ?>"></td>
+      <td><input type="text" name="email" class="text_field" <?php if (isset($_GET['user_id'])) {echo "disabled";} ?> value="<?php echo $email; ?>"></td>
     </tr>
     <tr>  
       <td>Password:</td>
-      <td><input type="password" name="password" class="txtField" ></td>
+      <td><input type="password" name="password" class="text_field" ></td>
     </tr>
     <tr>  
       <td>Repeat password:</td>
-      <td><input type="password" name="password2" class="txtField"></td>
+      <td><input type="password" name="password2" class="text_field"></td>
     </tr>
 
    

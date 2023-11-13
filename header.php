@@ -58,7 +58,7 @@ margin-top: 1vw;
             position: fixed;
             top: 0;
             left: -250px; /* Initially hidden */
-            background-color: grey;
+            background: linear-gradient(to left, darkgray 0%, grey 100%);
             color: white;
             transition: left 0.3s;
         }
@@ -77,9 +77,10 @@ margin-top: 1vw;
             position: fixed;
             top: 20px;
             left: 20px;
-            background-color: grey;
+            background: linear-gradient(to left, grey 0%, darkgray 100%);
             color: white;
             border: 1px solid white;
+            border-radius: 10px;
             padding: 10px 20px;
             cursor: pointer;
         }

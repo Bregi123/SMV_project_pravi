@@ -67,7 +67,7 @@ echo '</table>';
     <title>Subject Management</title>
     <style>
     body {
-  background: linear-gradient(to bottom, whitesmoke 0%, grey 100%);
+  background: linear-gradient(to left, whitesmoke 0%, grey 100%);
   padding-top: 65px;
   padding-left: 20px;
   padding-right: 40px;
