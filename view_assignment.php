@@ -27,7 +27,7 @@ include 'database.php';
 <head>
     <title> Professor</title>
     <style>
-              body {
+       body {
   background: linear-gradient(to bottom, whitesmoke 0%, grey 100%);
   padding-top: 65px;
   padding-left: 20px;

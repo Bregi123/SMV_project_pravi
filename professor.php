@@ -24,13 +24,6 @@ session_start();
 <head>
     <title> Professor</title>
     <style>
-              body {
-  background: linear-gradient(to bottom, whitesmoke 0%, grey 100%);
-  padding-top: 65px;
-  padding-left: 20px;
-  padding-right: 40px;
-  
-}
         #logoutButton {
             background-color: #007BFF; /* Change the background color as desired */
             color: #fff; /* Change the text color as desired */
@@ -39,12 +32,48 @@ session_start();
             padding: 10px 20px; /* Adjust padding as needed */
             cursor: pointer;
         }
+        body {
+  padding-top: 65px;
+  padding-left: 20px;
+  padding-right: 40px;
+  background-image: url('science_pattern.jpg');
+  backdrop-filter: blur(8px);
+}
+#tekst {
+    font-size: 2.5vw;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    width: 30vw;
+    letter-spacing: 5px;
+    color: white;
+    border-right: 5px solid;
+    animation: 
+     typing 2s steps(15),
+     cursor .6s step-end infinite alternate;
+}
+.divneki{
+    margin: auto;
+    text-align:center;
+    justify-content: center;
+    margin-top: 14vw;
+}
+
+@keyframes cursor {     /* TUKI JE ZATO DA SE ONA CRTICA NA KONCU BLNKA (zdelo se mi je kul) */
+    
+    50% { border-color: transparent; }
+    
+}
+
+@keyframes typing {
+    from { width: 0; }
+}
 
        
     </style>
 </head>
 <body >
-<img src="welcome_professor.jpg" width = "100%">
+<div class="divneki"><div id=tekst> Welcome to Pibernet! </div></div>
 <?php
 include 'navigation_bar_prof.php';
 ?>

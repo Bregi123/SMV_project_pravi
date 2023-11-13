@@ -19,7 +19,7 @@
 </div>
 
 <div class="sidebar-image">
-<a style= "position: fixed; bottom: 40px; left: 10px; width: 50px; height: 50px;">PROFESSOR</a>
+<a style= "position: fixed; bottom: 40px; left: 10px; width: 50px; height: 50px; color: white;">PROFESSOR</a>
 <a href="Register.php"><img src="pfp.jpg" alt="Image Description" style="position: fixed; bottom: 20px; left: 10px; width: 50px; height: 50px;"></a>
 </div>
 

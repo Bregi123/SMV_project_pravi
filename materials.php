@@ -77,7 +77,13 @@ if (isset($_POST['idsubject'])) {
             padding: 10px 20px; /* Adjust padding as needed */
             cursor: pointer;
         }
-
+        body {
+  background: linear-gradient(to bottom, whitesmoke 0%, grey 100%);
+  padding-top: 65px;
+  padding-left: 20px;
+  padding-right: 40px;
+  
+}
        
     </style>
 </head>
