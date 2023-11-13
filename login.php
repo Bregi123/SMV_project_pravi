@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   width: 30%;
   border: 3px solid grey;
   padding-left:100px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 
   left: 0;
   top: 0;
@@ -113,6 +113,7 @@ body {
 form {
   width: 350px;
   position: relative;
+  height: 200px
 }
 form .form-field::before {
   font-size: 20px;
@@ -146,7 +147,7 @@ form .form-field {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   position: relative;
 }
 form input {
@@ -157,14 +158,18 @@ form input {
   border-radius: 4px;
   border: none;
   display: block;
-  padding: 0.9rem 0.7rem;
+  padding-top: 20px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   font-size: 17px;
   color: #4A4A4A;
   text-indent: 40px;
+  height:30px;
+  width:50px
 }
 .text_login{
 color:white;
+font-size: 20px;
+padding-bottom 5px;
 }
 form .btn {
   outline: none;
@@ -172,11 +177,11 @@ form .btn {
   cursor: pointer;
   display: inline-block;
   margin: 0 auto;
-  padding: 0.9rem 2.5rem;
+  padding: 0.4rem 2.0rem;
   text-align: center;
   background-color: 	#A0A0A0;
   color: #fff;
-  border-radius: 4px;
+  border-radius: 6px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   font-size: 17px;
 
