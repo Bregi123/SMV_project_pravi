@@ -182,7 +182,9 @@ form .btn {
 
 }
 form .btn:hover{
-  background-color: yellow;
+  background-color: #003366;
+  color: white;
+  border: 1px solid white;
 }
 </style>
 <head>
