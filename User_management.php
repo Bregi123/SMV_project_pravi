@@ -2,7 +2,7 @@
 
 <?php
 include 'header.php';
-echo '<div class = "h2" >USER MANAGEMENT </div>';
+echo '<div class = "h2" >User Management </div>';
 // Start the session (this should be at the top of your PHP script)
 echo '<div style = " text-align: right;">';
 echo '<button type="button" class="btn btn-primary" onclick="location.href = \'edit.user.php\'">Add</button>';
@@ -131,7 +131,7 @@ echo '</table>';
     <title>User Management</title>
     <style>
     body {
-  background: linear-gradient(to bottom, whitesmoke 0%, grey 100%);
+  background-color: whitesmoke;
   padding-top: 65px;
   padding-left: 20px;
   padding-right: 40px;
